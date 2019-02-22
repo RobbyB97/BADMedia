@@ -1,0 +1,24 @@
+[INFO]: Running file ~/main/app.py:
+[ERROR]: Error in main process
+Traceback (most recent call last):
+  File "app.py", line 72, in <module>
+    getInfo()
+  File "app.py", line 33, in getInfo
+    if (inp.len() < 3 or inp.len() > 5):
+AttributeError: 'list' object has no attribute 'len'
+[INFO]: Running file ~/main/app.py:
+[INFO]: Running file ~/main/app.py:
+[ERROR]: Could not parse input
+Traceback (most recent call last):
+  File "app.py", line 52, in getInfo
+    url = str(url[0])
+UnboundLocalError: local variable 'url' referenced before assignment
+[INFO]: Running file ~/main/app.py:
+[ERROR]: Could not parse input
+Traceback (most recent call last):
+  File "app.py", line 35, in getInfo
+    url = str(url[0])
+UnboundLocalError: local variable 'url' referenced before assignment
+[INFO]: Running file ~/main/app.py:
+[INFO]: Running file ~/main/app.py:
+[INFO]: Running file ~/main/app.py:
