@@ -22,3 +22,51 @@ UnboundLocalError: local variable 'url' referenced before assignment
 [INFO]: Running file ~/main/app.py:
 [INFO]: Running file ~/main/app.py:
 [INFO]: Running file ~/main/app.py:
+[INFO]: Running file ~/main/app.py:
+[INFO]: app.py started:
+[INFO]: getInfo started...
+[INFO]: Audio mediatype selected...
+[DEBUG]: getAudio started:
+[ERROR]: Error in main process
+Traceback (most recent call last):
+  File "app.py", line 65, in getAudio
+    jsonfile = open('./JSON/%s.json' % medianame, 'w')
+FileNotFoundError: [Errno 2] No such file or directory: './JSON/sdfa.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "app.py", line 83, in getInfo
+    getAudio()
+  File "app.py", line 71, in getAudio
+    log.Exception('Error in getYoutube:')
+AttributeError: 'Logger' object has no attribute 'Exception'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "app.py", line 104, in <module>
+    getInfo()
+  File "app.py", line 97, in getInfo
+    log.Exception('getInfo error:')
+AttributeError: 'Logger' object has no attribute 'Exception'
+[INFO]: Running file ~/main/app.py:
+[INFO]: app.py started:
+[INFO]: getInfo started...
+[INFO]: Audio mediatype selected...
+[DEBUG]: getAudio started:
+[ERROR]: getInfo error:
+Traceback (most recent call last):
+  File "app.py", line 65, in getAudio
+    jsonfile = open('./JSON/%s.json' % medianame, 'w')
+FileNotFoundError: [Errno 2] No such file or directory: './JSON/fdafad.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "app.py", line 83, in getInfo
+    getAudio()
+  File "app.py", line 71, in getAudio
+    log.Exception('Error in getYoutube:')
+AttributeError: 'Logger' object has no attribute 'Exception'
+[INFO]: getInfo started...

@@ -35,27 +35,27 @@ def getText():
 
         return
     except Exception:
-        log.Exception('Error in getText:')
+        log.exception('Error in getText:')
 def getYoutube():
     log.debug('getYoutube started:')
     try:
 
         return
     except Exception:
-        log.Exception('Error in getYoutube:')
+        log.exception('Error in getYoutube:')
 def getImage():
     log.debug('getImage started:')
     try:
         return
     except Exception:
-        log.Exception('Error in getImage:')
+        log.exception('Error in getImage:')
 def getVideo():
     log.debug('getVideo started:')
     try:
 
         return
     except Exception:
-        log.Exception('Error in getVideo:')
+        log.exception('Error in getVideo:')
 def getAudio():
     log.debug('getAudio started:')
     try:
@@ -68,7 +68,7 @@ def getAudio():
         soup = bs(xml, "lxml")
         return
     except Exception:
-        log.Exception('Error in getYoutube:')
+        log.exception('Error in getYoutube:')
 
 # Select mediatype to scrape
 def getInfo():
@@ -94,11 +94,12 @@ def getInfo():
             log.info('%s is not a valid media type...')
             getInfo()
     except Exception:
-        log.Exception('getInfo error:')
+        log.exception('getInfo error:')
         getInfo()
 
 
 if __name__ == '__main__':
+    log.info('app.py started:')
     try:
         getInfo()
     except Exception:
