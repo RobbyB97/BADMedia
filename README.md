@@ -26,3 +26,5 @@ ___
     }
   }
   ```
+  This is the format of a feeds corresponding json object. the "media" key can hold any number of URLs.
+___
