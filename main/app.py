@@ -70,12 +70,17 @@ def getAudio():
         xml = requests.get(link).text
         soup = bs(xml, "lxml")
         i=0
-        for element in soup.findAll('enclosure'):
-            if (element['url'][-3:] == 'mp3'):
+        for element in soup.findAll(tagname):
+            if '.mp3' in element['url']:
                 dict[str(i)] = element['url']
                 i += 1
             else:
-                log.warning('%s is not an audio file, and will be skipped...' % element['url'][-3:])
+                log.warning('%s is not an audio file, and will be skipped...' % element['url'])
+        log.info('Found %s files in XML' % str(len(dict)))
+        json_str = json.dumps(dict, sort_keys=True, indent=4)
+        jsonfile.write(json_str)
+        jsonfile.close()
+        log.info('%s json list created...' % medianame)
         jsonfile.close()
         return
     except Exception:
