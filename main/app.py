@@ -64,9 +64,18 @@ def getAudio():
         medianame = str(input('What will you call this media?'))
         jsonfile = open('./json/%s.json' % medianame, 'w+')
         link = str(input('Enter the link to the RSS feed:'))
+        tagname = str(input('Enter tagname containing media: [Default: enclosure]'))
+        if not tagname:
+            tagname = 'enclosure'
         xml = requests.get(link).text
         soup = bs(xml, "lxml")
-
+        i=0
+        for element in soup.findAll('enclosure'):
+            if (element['url'][-3:] == 'mp3'):
+                dict[str(i)] = element['url']
+                i += 1
+            else:
+                log.warning('%s is not an audio file, and will be skipped...' % element['url'][-3:])
         jsonfile.close()
         return
     except Exception:
