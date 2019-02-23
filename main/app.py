@@ -11,7 +11,7 @@ from time import sleep
 import logging
 import json
 import pytube
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as bs
 
 #logger
 log = logging.getLogger(__name__)
@@ -27,52 +27,67 @@ log.addHandler(handler)
 log.info('Running file ~/main/app.py:')
 
 
-""" Scrape media """
+# Scrape Media, save data as json file
+# and append medianame to list of json objects
 def getText():
+    log.debug('getText started:')
     try:
 
+        return
     except Exception:
         log.Exception('Error in getText:')
 def getYoutube():
+    log.debug('getYoutube started:')
     try:
 
+        return
     except Exception:
         log.Exception('Error in getYoutube:')
 def getImage():
+    log.debug('getImage started:')
     try:
-
+        return
     except Exception:
         log.Exception('Error in getImage:')
 def getVideo():
+    log.debug('getVideo started:')
     try:
 
+        return
     except Exception:
         log.Exception('Error in getVideo:')
 def getAudio():
+    log.debug('getAudio started:')
     try:
-
+        # Set variables
+        dict = {}
+        medianame = str(input('What will you call this media?'))
+        jsonfile = open('./JSON/%s.json' % medianame, 'w')
+        link = str(input('Enter the link to the RSS feed:'))
+        xml = requests.get(link).text
+        soup = bs(xml, "lxml")
+        return
     except Exception:
         log.Exception('Error in getYoutube:')
 
-
-""" Select mediatype to scrape """
+# Select mediatype to scrape
 def getInfo():
     log.info('getInfo started...')
     try:
         inp = input(print('What type of media would you like to gather? [text, audio, video, image or youtube]'))
-        if (inp == 'text'):
+        if inp == 'text':
             log.info('Text mediatype selected...')
             getText()
-        elif (inp == 'audio'):
+        elif inp == 'audio':
             log.info('Audio mediatype selected...')
             getAudio()
-        elif (inp == 'video'):
+        elif inp == 'video':
             log.info('Video mediatype selected...')
             getVideo()
-        elif (inp == 'image'):
+        elif inp == 'image':
             log.info('Image mediatype selected...')
             getImage()
-        elif (inp == 'youtube'):
+        elif inp == 'youtube':
             log.info('Youtube mediatype selected...')
             getYoutube()
         else:

@@ -4,7 +4,7 @@
 
  This is made possible through XML/RSS feeds (you know, those things typically used as nothing more than background noise on ad-invested news blogs?) Most prominent producers of media have these, and all a user need do is enter it into the BADMedia program to keep themselves updated on the producer through an encapsulated section of their webpage.
  
-  This is by far the least constrained way to keep a user up-to-date on whatever interests them most and can supply media that interests them. If the user is ever going on a flight or knows they will not be able to access the internet for some time, they are no longer restricted to whatever entertainment they would otherwise be subjected to without the help of BADMedia. This is because every unit of media on a BADMedia page can be downloaded at the click of a button.
+  This is by far the least constrained way to keep a user up-to-date on whatever interests them most and can supply media that interests them. If the user is ever going on a flight or knows they will not be able to access the internet for some time, they are no longer restricted to whatever entertainment they would otherwise be subjected to without the help of BADMedia. This is because every unit of media on a BADMedia page can be downloaded at the click of a button. (Except youtube videos)
 
 ___
 
