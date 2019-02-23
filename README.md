@@ -15,24 +15,8 @@ ___
 ## How it works
   The main Python file takes input from the user to convert the relevant content of a given RSS feed into a JSON object, which is added to a list of all the user's media. Then, an HTML file is dynamically generated to convert the JSON objects into encapsulated sections of the BADMedia page.
 
-  '''json
+  '''javascript
   {
-    "indent_size": "4",
-    "indent_char": " ",
-    "max_preserve_newlines": "5",
-    "preserve_newlines": true,
-    "keep_array_indentation": false,
-    "break_chained_methods": false,
-    "indent_scripts": "normal",
-    "brace_style": "collapse",
-    "space_before_conditional": true,
-    "unescape_strings": false,
-    "jslint_happy": false,
-    "end_with_newline": false,
-    "wrap_line_length": "0",
-    "indent_inner_html": false,
-    "comma_first": false,
-    "e4x": false,
     "medianame": "title given by user",
     "mediatype": "audio, video, text, image or youtube",
     "media": {
