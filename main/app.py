@@ -62,10 +62,12 @@ def getAudio():
         # Set variables
         dict = {}
         medianame = str(input('What will you call this media?'))
-        jsonfile = open('./JSON/%s.json' % medianame, 'w')
+        jsonfile = open('./json/%s.json' % medianame, 'w+')
         link = str(input('Enter the link to the RSS feed:'))
         xml = requests.get(link).text
         soup = bs(xml, "lxml")
+
+        jsonfile.close()
         return
     except Exception:
         log.exception('Error in getYoutube:')
