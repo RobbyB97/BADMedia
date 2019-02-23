@@ -71,7 +71,7 @@ def getAudio():
         soup = bs(xml, "lxml")
         i=0
         for element in soup.findAll(tagname):
-            if '.mp3' in element['url']:
+            if '.mp3' in element['url'].lower():
                 dict[str(i)] = element['url']
                 i += 1
             else:
