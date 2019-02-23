@@ -1,0 +1,10 @@
+{
+  "medianame": (title given by user),
+  "mediatype": (audio, video, text, image or youtube),
+  "media": {
+            "1": (url),
+            "2": (url),
+            "3": (url),
+            ...,
+           },
+}
