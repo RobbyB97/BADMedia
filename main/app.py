@@ -13,6 +13,9 @@ import json
 import pytube
 from bs4 import BeautifulSoup as bs
 
+#globals
+global appdir
+
 #logger
 log = logging.getLogger(__name__)
 log.setLevel(logging.DEBUG)
@@ -63,7 +66,8 @@ def getAudio():
         masterdict = {} # Final JSON object
         mediadict = {} # List of links to media
         medianame = str(input('What will you call this media?'))
-        jsonfile = open('./json/%s.json' % medianame, 'w+')
+        appdir = os.path.dirname(os.path.realpath(__file__))
+        jsonfile = open('%s/json/%s.json' % (appdir, medianame), 'w+')
         link = str(input('Enter the link to the RSS feed:'))
         tagname = str(input('Enter tagname containing media: [Default: enclosure]'))
         if not tagname:
