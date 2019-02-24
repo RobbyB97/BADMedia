@@ -60,7 +60,8 @@ def getAudio():
     log.debug('getAudio started:')
     try:
         # Set variables
-        dict = {}
+        masterdict = {} # Final JSON object
+        mediadict = {} # List of links to media
         medianame = str(input('What will you call this media?'))
         jsonfile = open('./json/%s.json' % medianame, 'w+')
         link = str(input('Enter the link to the RSS feed:'))
@@ -72,12 +73,17 @@ def getAudio():
         i=0
         for element in soup.findAll(tagname):
             if '.mp3' in element['url'].lower():
-                dict[str(i)] = element['url']
+                mediadict[str(i)] = element['url']
                 i += 1
             else:
                 log.warning('%s is not an audio file, and will be skipped...' % element['url'])
-        log.info('Found %s files in XML' % str(len(dict)))
-        json_str = json.dumps(dict, sort_keys=True, indent=4)
+        log.info('Found %s files in XML' % str(len(mediadict)))
+        # Create JSON object and write to file
+        masterdict['medianame'] = medianame
+        masterdict['mediatype'] = 'audio'
+        masterdict['media'] = mediadict
+        masterdict['tagname'] = tagname
+        json_str = json.dumps(masterdict, sort_keys=True, indent=4)
         jsonfile.write(json_str)
         jsonfile.close()
         log.info('%s json list created...' % medianame)
