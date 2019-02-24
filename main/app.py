@@ -13,10 +13,12 @@ import json
 import pytube
 from bs4 import BeautifulSoup as bs
 
+appdir = os.path.dirname(os.path.realpath(__file__))
 #logger
 log = logging.getLogger(__name__)
-log.setLevel(logging.DEBUG)
-handler = logging.FileHandler('app.log')
+log.setLevel(logging.WARNING)
+handlerpath = appdir + '/app.log'
+handler = logging.FileHandler(handlerpath)
 handler.setLevel(logging.DEBUG)
 consoleHandler = logging.StreamHandler()
 formatter = logging.Formatter('[%(levelname)s]: %(message)s')
@@ -36,7 +38,6 @@ def getInfo():
         mediadict = {} # List of links to media
         mediatype = str(input('What type of media is this? [audio, video, image, text, youtube]'))
         medianame = str(input('What will you call this media?'))
-        appdir = os.path.dirname(os.path.realpath(__file__))
         jsonfile = open('%s/json/%s.json' % (appdir, medianame), 'w+')
         link = str(input('Enter the link to the RSS feed:'))
         tagname = str(input('Enter tagname containing media: [Default: enclosure]'))
