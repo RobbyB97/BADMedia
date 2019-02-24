@@ -13,9 +13,6 @@ import json
 import pytube
 from bs4 import BeautifulSoup as bs
 
-#globals
-global appdir
-
 #logger
 log = logging.getLogger(__name__)
 log.setLevel(logging.DEBUG)
@@ -30,41 +27,14 @@ log.addHandler(handler)
 log.info('Running file ~/main/app.py:')
 
 
-# Scrape Media, save data as json file
-# and append medianame to list of json objects
-def getText():
-    log.debug('getText started:')
-    try:
-
-        return
-    except Exception:
-        log.exception('Error in getText:')
-def getYoutube():
-    log.debug('getYoutube started:')
-    try:
-
-        return
-    except Exception:
-        log.exception('Error in getYoutube:')
-def getImage():
-    log.debug('getImage started:')
-    try:
-        return
-    except Exception:
-        log.exception('Error in getImage:')
-def getVideo():
-    log.debug('getVideo started:')
-    try:
-
-        return
-    except Exception:
-        log.exception('Error in getVideo:')
-def getAudio():
-    log.debug('getAudio started:')
+""" Construct JSON object """
+def getInfo():
+    log.debug('getInfo started:')
     try:
         # Set variables
         masterdict = {} # Final JSON object
         mediadict = {} # List of links to media
+        mediatype = str(input('What type of media is this? [audio, video, image, text, youtube]'))
         medianame = str(input('What will you call this media?'))
         appdir = os.path.dirname(os.path.realpath(__file__))
         jsonfile = open('%s/json/%s.json' % (appdir, medianame), 'w+')
@@ -76,15 +46,10 @@ def getAudio():
         soup = bs(xml, "lxml")
         i=0
         for element in soup.findAll(tagname):
-            if '.mp3' in element['url'].lower():
-                mediadict[str(i)] = element['url']
-                i += 1
-            else:
-                log.warning('%s is not an audio file, and will be skipped...' % element['url'])
+            mediadict[str(i)] = element['url']
+            i += 1
         log.info('Found %s files in XML' % str(len(mediadict)))
         # Create JSON object and write to file
-        masterdict['medianame'] = medianame
-        masterdict['mediatype'] = 'audio'
         masterdict['media'] = mediadict
         masterdict['tagname'] = tagname
         json_str = json.dumps(masterdict, sort_keys=True, indent=4)
@@ -94,35 +59,7 @@ def getAudio():
         jsonfile.close()
         return
     except Exception:
-        log.exception('Error in getYoutube:')
-
-# Select mediatype to scrape
-def getInfo():
-    log.info('getInfo started...')
-    try:
-        inp = input(print('What type of media would you like to gather? [text, audio, video, image or youtube]'))
-        if inp == 'text':
-            log.info('Text mediatype selected...')
-            getText()
-        elif inp == 'audio':
-            log.info('Audio mediatype selected...')
-            getAudio()
-        elif inp == 'video':
-            log.info('Video mediatype selected...')
-            getVideo()
-        elif inp == 'image':
-            log.info('Image mediatype selected...')
-            getImage()
-        elif inp == 'youtube':
-            log.info('Youtube mediatype selected...')
-            getYoutube()
-        else:
-            log.info('%s is not a valid media type...')
-            getInfo()
-    except Exception:
-        log.exception('getInfo error:')
-        getInfo()
-
+        log.exception('Error in getInfo:')
 
 if __name__ == '__main__':
     log.info('app.py started:')
