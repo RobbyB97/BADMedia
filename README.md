@@ -19,6 +19,7 @@ ___
   {
     "medianame": "title given by user",
     "mediatype": "audio, video, text, image or youtube",
+    "tagname": "tag that encloses media in XML file",
     "media": {
       "1": "url",
       "2": "url",
