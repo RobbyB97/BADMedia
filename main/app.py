@@ -75,16 +75,14 @@ def getInfo():
         jsonfile.close()
 
         # Add media to list
-        medialist = open('./jsonlist.txt', 'r')
+        medialist = open('jsonlist.txt', 'r')
         names = medialist.read().split(',')
-        print(names)
-        if medianame not in names:
-            medialist.close()
-            medialist = open('./jsonlist.txt', 'w')
-            for name in names:
-                medialist.write('%s,' % name)
-            medialist.write('%s,' % medianame)
         medialist.close()
+        if medianame not in names:
+            log.info('Adding %s to jsonlist...' % medianame)
+            medialist = open('jsonlist.txt', 'a')
+            medialist.write(',%s' % medianame)
+            medialist.close()
 
     except Exception:
         log.exception('Error in getInfo:')
@@ -93,8 +91,6 @@ if __name__ == '__main__':
     log.info('app.py started:')
     os.chdir(appdir)
     try:
-        medialist = open('./jsonlist.txt', 'w')
-        medialist.write('test1,test2,test3,test4,')
         getInfo()
         getMedia()
     except Exception:
