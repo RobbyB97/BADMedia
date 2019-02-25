@@ -2,3 +2,4 @@
 main/*.log
 main/app.log
 main/json/*.json
+main/jsonlist.txt
