@@ -1,4 +1,3 @@
-
 """
 Author: Robby Bergers
 Info: Gather media to be displayed on webpage
@@ -28,21 +27,36 @@ log.addHandler(consoleHandler)
 log.addHandler(handler)
 log.info('Running file ~/main/app.py:')
 
-
-""" Construct JSON object """
-def getInfo():
-    log.debug('getInfo started:')
+""" Reconstruct JSON object with refreshed media links """
+def getMedia():
+    log.info('getMedia started:')
     try:
+        os.chdir('%s/json/' % appdir)
+
+    except Exception:
+        log.exception('Error in getMedia:')
+
+""" Construct JSON object for HTML page"""
+def getInfo():
+    log.info('getInfo started:')
+    try:
+
         # Set variables
         masterdict = {} # Final JSON object
         mediadict = {} # List of links to media
-        mediatype = str(input('What type of media is this? [audio, video, image, text, youtube]'))
-        medianame = str(input('What will you call this media?'))
-        jsonfile = open('%s/json/%s.json' % (appdir, medianame), 'w+')
-        link = str(input('Enter the link to the RSS feed:'))
-        tagname = str(input('Enter tagname containing media: [Default: enclosure]'))
+
+        # Get info on media from user
+        mediatype = str(input('What type of media is this? [audio, video, image, text, youtube]\n'))
+        medianame = str(input('What will you call this media?\n'))
+        masterdict['name'] = medianame
+        link = str(input('Enter the link to the RSS feed:\n'))
+        masterdict['xml'] = link
+        tagname = str(input('Enter tagname containing media: [Default: enclosure]\n'))
         if not tagname:
             tagname = 'enclosure'
+        masterdict['tag'] = tagname
+
+        # Get XML file, scrape for media links
         xml = requests.get(link).text
         soup = bs(xml, "lxml")
         i=0
@@ -50,21 +64,38 @@ def getInfo():
             mediadict[str(i)] = element['url']
             i += 1
         log.info('Found %s files in XML' % str(len(mediadict)))
-        # Create JSON object and write to file
         masterdict['media'] = mediadict
-        masterdict['tagname'] = tagname
+
+        # Create JSON object and write to file
+        jsonfile = open('./json/%s.json' % medianame, 'w')
         json_str = json.dumps(masterdict, sort_keys=True, indent=4)
         jsonfile.write(json_str)
         jsonfile.close()
         log.info('%s json list created...' % medianame)
         jsonfile.close()
-        return
+
+        # Add media to list
+        medialist = open('./jsonlist.txt', 'r')
+        names = medialist.read().split(',')
+        print(names)
+        if medianame not in names:
+            medialist.close()
+            medialist = open('./jsonlist.txt', 'w')
+            for name in names:
+                medialist.write('%s,' % name)
+            medialist.write('%s,' % medianame)
+        medialist.close()
+
     except Exception:
         log.exception('Error in getInfo:')
 
 if __name__ == '__main__':
     log.info('app.py started:')
+    os.chdir(appdir)
     try:
+        medialist = open('./jsonlist.txt', 'w')
+        medialist.write('test1,test2,test3,test4,')
         getInfo()
+        getMedia()
     except Exception:
         log.exception('Error in main process')
