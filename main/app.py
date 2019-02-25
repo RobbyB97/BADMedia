@@ -30,24 +30,27 @@ log.info('Running file ~/main/app.py:')
 """ Clear json object in json file """
 def clearJSON(object):
     os.chdir('%s/json/' % appdir)
-    try:
+    print(os.listdir())
 
+    try:
         # Remove json object
         os.remove('%s.json' % object)
-
-        # Remove from jsonlist
-        os.chdir(appdir)
-        medialist = open('jsonlist.txt', 'r')
-        names = medialist.read().split(',')
-        medialist.close()
-        medialist.open('jsonlist.txt', 'w')
-        for name in names:
-            if name not object:
-                medialist.write('%s,' % name)
-        medialist.close()
-
     except:
         log.warning('%s.json doesn\'t exist' % object)
+
+    # Remove from jsonlist
+    # FIXME: jsonlist not being rewritten properly
+    os.chdir(appdir)
+    medialist = open('jsonlist.txt', 'r')
+    names = medialist.read().split(',')
+    medialist.close()
+    medialist = open('jsonlist.txt', 'w')
+    for name in names:
+        if name is object:
+            names.remove(name)
+        else:
+            medialist.write('%s,' % name)
+    medialist.close()
 
 """ Reconstruct JSON object with refreshed media links """
 def getMedia():
@@ -120,6 +123,6 @@ if __name__ == '__main__':
     log.info('app.py started:')
     os.chdir(appdir)
     try:
-        getInfo()
+        clearJSON('test5')
     except Exception:
         log.exception('Error in main process')
