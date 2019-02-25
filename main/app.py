@@ -31,7 +31,21 @@ log.info('Running file ~/main/app.py:')
 def clearJSON(object):
     os.chdir('%s/json/' % appdir)
     try:
+
+        # Remove json object
         os.remove('%s.json' % object)
+
+        # Remove from jsonlist
+        os.chdir(appdir)
+        medialist = open('jsonlist.txt', 'r')
+        names = medialist.read().split(',')
+        medialist.close()
+        medialist.open('jsonlist.txt', 'w')
+        for name in names:
+            if name not object:
+                medialist.write('%s,' % name)
+        medialist.close()
+
     except:
         log.warning('%s.json doesn\'t exist' % object)
 
