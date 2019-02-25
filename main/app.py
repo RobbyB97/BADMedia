@@ -68,7 +68,7 @@ def getInfo():
         masterdict['media'] = mediadict
 
         # Create JSON object and write to file
-        jsonfile = open('./json/%s.json' % medianame, 'w')
+        jsonfile = open('./json/%s.json' % medianame, 'w+')
         json_str = json.dumps(masterdict, sort_keys=True, indent=4)
         jsonfile.write(json_str)
         jsonfile.close()
@@ -76,13 +76,19 @@ def getInfo():
         jsonfile.close()
 
         # Add media to list
-        medialist = open('jsonlist.txt', 'r')
-        names = medialist.read().split(',')
-        medialist.close()
-        if medianame not in names:
-            log.info('Adding %s to jsonlist...' % medianame)
-            medialist = open('jsonlist.txt', 'a')
-            medialist.write(',%s' % medianame)
+        try:
+            medialist = open('jsonlist.txt', 'r')
+            names = medialist.read().split(',')
+            medialist.close()
+            if medianame not in names:
+                log.info('Adding %s to jsonlist...' % medianame)
+                medialist = open('jsonlist.txt', 'a')
+                medialist.write(',%s' % medianame)
+                medialist.close()
+        except:
+            log.warning('jsonlist.txt not found, creating file...')
+            medialist = open('jsonlist.txt', 'w')
+            medialist.write('%s,' % medianame)
             medialist.close()
 
     except Exception:
