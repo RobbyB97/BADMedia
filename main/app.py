@@ -39,7 +39,6 @@ def clearAllJSON():
 """ Clear specific json object """
 def clearJSON(object):
     os.chdir('%s/json/' % appdir)
-    print(os.listdir())
 
     try:
         # Remove json object
@@ -48,17 +47,18 @@ def clearJSON(object):
         log.warning('%s.json doesn\'t exist' % object)
 
     # Remove from jsonlist
-    # FIXME: jsonlist not being rewritten properly
     os.chdir(appdir)
     medialist = open('jsonlist.txt', 'r')
-    names = medialist.read().split(',')
+    names = medialist.read().strip('\n').split(',')
+    print(names)
     medialist.close()
     medialist = open('jsonlist.txt', 'w')
     for name in names:
         if name is object:
             names.remove(name)
         else:
-            medialist.write('%s,' % name)
+            if name is not '':
+                medialist.write('%s,' % name)
     medialist.close()
 
 """ Reconstruct JSON object with refreshed media links """
@@ -73,6 +73,7 @@ def getMedia():
 """ Construct JSON object for HTML page"""
 def getInfo():
     log.info('getInfo started:')
+    os.chdir(appdir)
     try:
 
         # Set variables
