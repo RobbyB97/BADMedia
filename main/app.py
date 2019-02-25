@@ -27,12 +27,20 @@ log.addHandler(consoleHandler)
 log.addHandler(handler)
 log.info('Running file ~/main/app.py:')
 
+""" Clear json object in json file """
+def clearJSON(object):
+    os.chdir('%s/json/' % appdir)
+    try:
+        os.remove('%s.json' % object)
+    except:
+        log.warning('%s.json doesn\'t exist' % object)
+
 """ Reconstruct JSON object with refreshed media links """
 def getMedia():
     log.info('getMedia started:')
     try:
         os.chdir('%s/json/' % appdir)
-
+        #TODO: Download media files
     except Exception:
         log.exception('Error in getMedia:')
 
@@ -99,6 +107,5 @@ if __name__ == '__main__':
     os.chdir(appdir)
     try:
         getInfo()
-        getMedia()
     except Exception:
         log.exception('Error in main process')
