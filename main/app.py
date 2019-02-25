@@ -35,8 +35,26 @@ log.info('Running file ~/main/app.py:')
 
 
 
-""" Clear all json objects """
+""" Ensure jsonlist matches JSON objects """
+def cleanJSONList():
+
+    log.info('cleanJSONList started:')
+    os.chdir(appdir)
+
+    jsonobjects = []
+    jsons = os.listdir('%s/json/' % appdir)
+    for object in jsons:
+        if object.split('.')[1] == 'json':
+            jsonobjects.append(object.split('.')[0])
+    with open('jsonlist.txt', 'w') as file:
+        for name in jsonobjects:
+            file.write('%s,' % name)
+
+
+
+""" Clear all JSON objects """
 def clearAllJSON():
+
     log.info('clearAllJSON started:')
     os.chdir('%s/json/' % appdir)
 
@@ -49,21 +67,24 @@ def clearAllJSON():
 
 """ Clear specific json object """
 def clearJSON(object):
+
     log.info('clearJSON(%s) started:' % object)
     os.chdir('%s/json/' % appdir)
 
+    # Remove json file
     try:
-        # Remove json object
         os.remove('%s.json' % object)
     except:
         log.warning('%s.json doesn\'t exist' % object)
 
-    # Remove from jsonlist
+    # Get jsonlist names
     os.chdir(appdir)
     medialist = open('jsonlist.txt', 'r')
     names = medialist.read().strip('\n').split(',')
     print(names)
     medialist.close()
+
+    # Clear object from jsonlist
     medialist = open('jsonlist.txt', 'w')
     for name in names:
         if name is object:
@@ -76,20 +97,16 @@ def clearJSON(object):
 
 
 """ Reconstruct JSON object with refreshed media links """
-def getMedia():
+def getMedia(object):
+
     log.info('getMedia started:')
     os.chdir('%s/json/' % appdir)
-
-    try:
-        #TODO: Download media files
-        print('henlo')
-    except Exception:
-        log.exception('Error in getMedia:')
-
+    # TODO: Download media locally
 
 
 """ Construct JSON object for HTML page"""
 def getInfo():
+
     log.info('getInfo started:')
     os.chdir(appdir)
 
@@ -145,10 +162,13 @@ def getInfo():
 
 
 
+""" Main Process """
 if __name__ == '__main__':
+
     log.info('app.py started:')
     os.chdir(appdir)
+
     try:
-        getInfo()
+        cleanJSONList()
     except Exception:
         log.exception('Error in main process')
