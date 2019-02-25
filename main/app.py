@@ -47,6 +47,7 @@ def getInfo():
 
         # Get info on media from user
         mediatype = str(input('What type of media is this? [audio, video, image, text, youtube]\n'))
+        masterdict['type'] = mediatype
         medianame = str(input('What will you call this media?\n'))
         masterdict['name'] = medianame
         link = str(input('Enter the link to the RSS feed:\n'))
