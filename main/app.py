@@ -27,7 +27,16 @@ log.addHandler(consoleHandler)
 log.addHandler(handler)
 log.info('Running file ~/main/app.py:')
 
-""" Clear json object in json file """
+""" Clear all json objects """
+def clearAllJSON():
+    os.chdir('%s/json/' % appdir)
+    filelist = os.listdir()
+    for file in filelist:
+        name = file.split('.')[0]
+        clearJSON(name)
+
+
+""" Clear specific json object """
 def clearJSON(object):
     os.chdir('%s/json/' % appdir)
     print(os.listdir())
@@ -123,6 +132,6 @@ if __name__ == '__main__':
     log.info('app.py started:')
     os.chdir(appdir)
     try:
-        clearJSON('test5')
+        clearAllJSON()
     except Exception:
         log.exception('Error in main process')
