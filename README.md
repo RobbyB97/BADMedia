@@ -17,9 +17,10 @@ ___
 
   ```javascript
   {
-    "medianame": "title given by user",
-    "mediatype": "audio, video, text, image or youtube",
-    "tagname": "tag that encloses media in XML file",
+    "name": "title given by user",
+    "type": "audio, video, text, image or youtube",
+    "tag": "tag that encloses media in XML file",
+    "xml": "link to xml file",
     "media": {
       "1": "url",
       "2": "url",
