@@ -168,6 +168,22 @@ def createPage():
     log.info('createPage started:')
     os.chdir('%s/../docs/' % appdir)
 
+    # Get templates
+    with open('assets/templates/header.html', 'r') as f:
+        html = f.read().split('|')
+        header = html[0]
+        footer = html[1]
+
+    # Write header
+    with open('index.html', 'w') as f:
+        f.write(header)
+
+    # Write footer
+    with open('index.html', 'w') as f:
+        f.write(footer)
+
+
+
 
 """ Main Process """
 if __name__ == '__main__':
