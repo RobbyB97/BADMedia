@@ -162,6 +162,13 @@ def getInfo():
 
 
 
+""" Generate HTML File """
+def createPage():
+
+    log.info('createPage started:')
+    os.chdir('%s/../docs/' % appdir)
+
+
 """ Main Process """
 if __name__ == '__main__':
 
@@ -169,6 +176,6 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        cleanJSONList()
+        createPage()
     except Exception:
         log.exception('Error in main process')
