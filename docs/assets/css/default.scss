@@ -39,16 +39,39 @@ $font-small: 0.8em;
   Styles
 */
 
+#body {
+  background-color: #000;
+}
+
+#homebutton {
+  position: fixed;
+  left: 1em;
+  z-index: 4;
+  @media #{$phone} {
+    top: 0.1em;
+    height: $font-title;
+    max-height: $font-title;
+    width: auto;
+    max-width: auto;
+  }
+  @media #{$tablet} {
+    top: 0.2em;
+    height: #{$font-title + 1em};
+    max-height: #{$font-title + 1em};
+  }
+
+}
+
 #navbutton {
   position: fixed;
   right: 1em;
   z-index: 4;
   font-family: Arial;
+  font-size: $font-title;
   &:focus {
     outline: 0;
   }
   @media #{$phone} {
-    font-size: $font-title;
     margin: 0;
     margin-top: 0.1em;
     background: none;
@@ -58,7 +81,6 @@ $font-small: 0.8em;
     float: right;
   }
   @media #{$tablet} {
-    font-size: $font-title;
     margin-top: 0.2em;
   }
   @media #{$desktop} {

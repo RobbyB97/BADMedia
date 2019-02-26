@@ -11,16 +11,36 @@
 /*
   Styles
 */
+#body {
+  background-color: #000; }
+
+#homebutton {
+  position: fixed;
+  left: 1em;
+  z-index: 4; }
+  @media only screen and (min-width: 200px) {
+    #homebutton {
+      top: 0.1em;
+      height: 2em;
+      max-height: 2em;
+      width: auto;
+      max-width: auto; } }
+  @media only screen and (min-width: 768px) {
+    #homebutton {
+      top: 0.2em;
+      height: 3em;
+      max-height: 3em; } }
+
 #navbutton {
   position: fixed;
   right: 1em;
   z-index: 4;
-  font-family: Arial; }
+  font-family: Arial;
+  font-size: 2em; }
   #navbutton:focus {
     outline: 0; }
   @media only screen and (min-width: 200px) {
     #navbutton {
-      font-size: 2em;
       margin: 0;
       margin-top: 0.1em;
       background: none;
@@ -30,7 +50,6 @@
       float: right; } }
   @media only screen and (min-width: 768px) {
     #navbutton {
-      font-size: 2em;
       margin-top: 0.2em; } }
   @media only screen and (min-width: 1200px) {
     #navbutton:hover {
