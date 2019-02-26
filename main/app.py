@@ -187,10 +187,13 @@ def createPage():
         html = f.read().split('|')
         header = html[0]
         footer = html[1]
+    with open('assets/templates/topbar.html', 'r') as f:
+        topbar = f.read()
 
     # Write to index.html
     with open('index.html', 'w') as f:
         f.write(header)
+        f.write(topbar)
         # TODO: Fill with content
         f.write(footer)
 
@@ -204,6 +207,6 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        clearAllJSON()
+        createPage()
     except Exception:
         log.exception('Error in main process')

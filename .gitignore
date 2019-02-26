@@ -5,4 +5,4 @@ main/json/*.json
 main/jsonlist.txt
 docs/assets/css/*.map
 docs/assets/css/.sass-cache
-.*
+docs/index.html
