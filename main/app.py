@@ -174,12 +174,10 @@ def createPage():
         header = html[0]
         footer = html[1]
 
-    # Write header
+    # Write to index.html
     with open('index.html', 'w') as f:
         f.write(header)
-
-    # Write footer
-    with open('index.html', 'w') as f:
+        # TODO: Fill with content
         f.write(footer)
 
 
