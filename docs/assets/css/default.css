@@ -12,7 +12,7 @@
   Styles
 */
 #body {
-  background-color: #000; }
+  background-color: #2d2d2d; }
 
 #homebutton {
   position: fixed;
@@ -30,6 +30,24 @@
       top: 0.2em;
       height: 3em;
       max-height: 3em; } }
+
+#nav {
+  position: fixed;
+  display: inline-block;
+  top: 0;
+  right: 0;
+  margin: 0;
+  height: 0;
+  opacity: 0;
+  z-index: 3;
+  background-color: #262626;
+  transition: 175ms; }
+  @media only screen and (min-width: 200px) {
+    #nav {
+      width: 100vw; } }
+  @media only screen and (min-width: 1200px) {
+    #nav {
+      width: 20vw; } }
 
 #navbutton {
   position: fixed;

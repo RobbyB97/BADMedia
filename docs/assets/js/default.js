@@ -15,7 +15,7 @@ navbar = false;
 $(document).ready(function() {
 
   // Set event listeners
-  $("#navbar").click(function() {
+  $("#navbutton").click(function() {
     toggleNav();
   });
 
@@ -24,7 +24,13 @@ $(document).ready(function() {
 function toggleNav() {
   if (navbar) {
     $("#nav").css("height", "0");
+    $("#nav").css("opacity", "0");
+    $("#navbutton").html("&#9776;");
+    navbar = false;
   } else {
     $("#nav").css("height", "100vh");
+    $("#nav").css("opacity", "1");
+    $("#navbutton").html("&#10005;");
+    navbar = true;
   }
 }
