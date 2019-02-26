@@ -161,6 +161,20 @@ def getInfo():
         medialist.close()
 
 
+""" Generate HTML for media """
+def createMediaHTML():
+
+    log.info('createMediaHTML started:')
+    os.chdir('%s/../' % appdir)
+
+    # Declare HTML Variables (split by '|' when opened)
+    audio = '<div class="content"><h5><a href="|">|</a></h5></div>'
+    # audio[0] = opentag, audio[1] = after mp3 link, audio[2] = after mp3 title
+
+    # Write to HTML file
+    #with open('docs/assets/templates/media.html', 'w') as f:
+
+
 
 """ Generate HTML File """
 def createPage():
@@ -190,6 +204,6 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        createPage()
+        clearAllJSON()
     except Exception:
         log.exception('Error in main process')

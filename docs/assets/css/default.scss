@@ -5,3 +5,65 @@
   This is the SASS file used to style the BADMedia webpage
 
 */
+
+/*
+  Variables
+*/
+
+// Colors
+$primary-color: #182842; //#2f6cce;
+$primary-dark: #0c1522; //#132035; //#2656a5;
+$primary-dark-fade1: #2e3b4d;
+$primary-dark-fade2: #383c43;
+$primary-darker: #04060a; //#091425;
+$primary-highlight: #aac3eb;
+$primary-highestlight: #e5ecf9;
+$background-color: #010314;
+
+// Breakpoints
+$phone:"only screen and (min-width: 200px)";
+$tablet:"only screen and (min-width: 768px)";
+$desktop:"only screen and (min-width: 1200px)";
+
+// Fonts
+$default-font: Courier New;
+$nav-font: Helvetica;
+$font-title: 2em;
+$font-subtitle: 1.5em;
+$font-primary: 1.2em;
+$font-normal: 1em;
+$font-content: 0.9em;
+$font-small: 0.8em;
+
+/*
+  Styles
+*/
+
+#navbutton {
+  position: fixed;
+  right: 1em;
+  z-index: 4;
+  font-family: Arial;
+  &:focus {
+    outline: 0;
+  }
+  @media #{$phone} {
+    font-size: $font-title;
+    margin: 0;
+    margin-top: 0.1em;
+    background: none;
+    border: 0;
+    color: white;
+    padding: 0;
+    float: right;
+  }
+  @media #{$tablet} {
+    font-size: $font-title;
+    margin-top: 0.2em;
+  }
+  @media #{$desktop} {
+    &:hover {
+      color: $primary-highlight;
+    }
+  }
+}

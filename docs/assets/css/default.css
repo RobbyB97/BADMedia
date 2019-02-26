@@ -1,0 +1,39 @@
+/*
+
+  Author: Robby Bergers
+
+  This is the SASS file used to style the BADMedia webpage
+
+*/
+/*
+  Variables
+*/
+/*
+  Styles
+*/
+#navbutton {
+  position: fixed;
+  right: 1em;
+  z-index: 4;
+  font-family: Arial; }
+  #navbutton:focus {
+    outline: 0; }
+  @media only screen and (min-width: 200px) {
+    #navbutton {
+      font-size: 2em;
+      margin: 0;
+      margin-top: 0.1em;
+      background: none;
+      border: 0;
+      color: white;
+      padding: 0;
+      float: right; } }
+  @media only screen and (min-width: 768px) {
+    #navbutton {
+      font-size: 2em;
+      margin-top: 0.2em; } }
+  @media only screen and (min-width: 1200px) {
+    #navbutton:hover {
+      color: #aac3eb; } }
+
+/*# sourceMappingURL=default.css.map */
