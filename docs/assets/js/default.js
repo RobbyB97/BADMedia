@@ -19,9 +19,24 @@ $(document).ready(function() {
     toggleNav();
   });
 
+  home();
+
 });
 
+// Hide all page sections
+function clearPage() {
+
+  $("#homebg").hide();
+  $("#audiobg").hide();
+  $("#imagebg").hide();
+  $("#textbg").hide();
+  $("#youtubebg").hide();
+
+}
+
+// Toggles navigation sidebar
 function toggleNav() {
+
   if (navbar) {
     $("#nav").css("height", "0");
     $("#nav").css("opacity", "0");
@@ -33,4 +48,27 @@ function toggleNav() {
     $("#navbutton").html("&#10005;");
     navbar = true;
   }
+
+}
+
+// Show page section
+function homepage() {
+  clearPage();
+  $("#homebg").show();
+}
+function audiopage() {
+  clearPage();
+  $("#audiobg").show();
+}
+function imagepage() {
+  clearPage();
+  $("#imagebg").show();
+}
+function textpage() {
+  clearPage();
+  $("#textbg").show();
+}
+function youtubepage() {
+  clearPage();
+  $("#youtubebg").show();
 }
