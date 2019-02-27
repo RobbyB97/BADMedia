@@ -2,7 +2,8 @@
 
   Author: Robby Bergers
 
-  This is the SASS file used to style the BADMedia webpage
+  This is the default SASS file used to style the BADMedia webpage, used to
+  style elements common to every BADMedia subpage
 
 */
 
@@ -106,4 +107,12 @@ $font-small: 0.8em;
       color: $primary-highlight;
     }
   }
+}
+
+#home {
+
+}
+
+#audio {
+  
 }

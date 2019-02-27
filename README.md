@@ -8,8 +8,6 @@
 
 ___
 
-<img src="./images/badmediaexample.png" alt="screenshot of prototype webpage" width="100%" height="auto">
-Here is a sample of a BADMedia page, which shows real-time updates from NASA, StarTalk podcast and youtube channel 'Amazing Space' (This user clearly loves space, and is able to click on the images to learn more about them, listen to his favorite podcast through the site or download it, and watch the latest videos from a youtube channel he is subscribed to)
 
 ___
 ## How it works
