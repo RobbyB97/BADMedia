@@ -207,6 +207,6 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        createPage()
+        getInfo()
     except Exception:
         log.exception('Error in main process')
