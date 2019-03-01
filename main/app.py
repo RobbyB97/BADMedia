@@ -161,20 +161,6 @@ def getInfo():
         medialist.close()
 
 
-""" Generate HTML for media """
-def createMediaHTML():
-
-    log.info('createMediaHTML started:')
-    os.chdir('%s/../' % appdir)
-
-    # Declare HTML Variables (split by '|' when opened)
-    audio = '<div class="content"><h5><a href="|">|</a></h5></div>'
-    # audio[0] = opentag, audio[1] = after mp3 link, audio[2] = after mp3 title
-
-    # Write to HTML file
-    #with open('docs/assets/templates/media.html', 'w') as f:
-
-
 
 """ Generate HTML File """
 def createPage():
@@ -182,18 +168,30 @@ def createPage():
     log.info('createPage started:')
     os.chdir('%s/../docs/' % appdir)
 
+    # variables
+    audio = []
+    youtube = []
+    image = []
+    text = []
+
     # Get templates
     with open('assets/templates/header.html', 'r') as f:
         html = f.read().split('|')
-        header = html[0]
-        footer = html[1]
+        header = html[1]
+        footer = html[2]
     with open('assets/templates/topbar.html', 'r') as f:
         topbar = f.read()
+    with open('assets/templates/pages.html', 'r') as f:
+        # Look at pages.html for list info
+        pages = f.read().split('|')
+        pages.pop(0)
 
     # Write to index.html
     with open('index.html', 'w') as f:
         f.write(header)
         f.write(topbar)
+        for page in pages:
+            f.write(page)
         # TODO: Fill with content
         f.write(footer)
 
@@ -207,6 +205,6 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        getInfo()
+        createPage()
     except Exception:
         log.exception('Error in main process')
