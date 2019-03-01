@@ -162,6 +162,22 @@ def getInfo():
 
 
 
+""" Make blog sections """
+def makeAudio():
+    audio=[]
+    return audio
+def makeYoutube():
+    youtube=[]
+    return youtube
+def makeImage():
+    image=[]
+    return image
+def makeText():
+    text=[]
+    return text
+
+
+
 """ Generate HTML File """
 def createPage():
 
@@ -169,10 +185,10 @@ def createPage():
     os.chdir('%s/../docs/' % appdir)
 
     # variables
-    audio = []
-    youtube = []
-    image = []
-    text = []
+    audio = makeAudio()
+    youtube = [makeYoutube()
+    image = makeImage()
+    text = makeText()
 
     # Get templates
     with open('assets/templates/header.html', 'r') as f:
