@@ -52,6 +52,20 @@ def cleanJSONList():
 
 
 
+""" Load json object """
+def loadJSON(object):
+
+    log.info('loadJSON started:')
+    os.chdir(appdir)
+
+    try:
+
+    except Exception:
+        log.exception('Error loading json file')
+
+
+
+
 """ Clear all JSON objects """
 def clearAllJSON():
 
@@ -185,7 +199,7 @@ def createPage():
     os.chdir('%s/../docs/' % appdir)
 
     # variables
-    
+
 
     # Get templates
     with open('assets/templates/header.html', 'r') as f:
