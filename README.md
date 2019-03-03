@@ -44,12 +44,21 @@ ___
 
 ## TODO
 
+
   [x] Directory structure
+
   [x] Get data from user
+
   [x] Store JSON objects
+
   [x] Maintain / verify JSON objects
+
   [x] Add docs structure
+
   [x] Main HTML templates
+
   [x] Create SASS / JS assets
+
   [ ] Create post templates
+
   [ ] Finish index.html generator
