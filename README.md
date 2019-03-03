@@ -62,3 +62,5 @@ ___
   [ ] Create post templates
 
   [ ] Finish index.html generator
+
+  [ ] Improve user interface for configuring BAD page
