@@ -12,10 +12,12 @@ ___
 ## Setting up webpage
 
 Run the main Python script:
+
 <img src="./images/pythonscript.png">
 
 
 Answer questions per media source
+
 <img src="./images/getinfo.png">
 
 
