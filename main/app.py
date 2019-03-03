@@ -185,10 +185,7 @@ def createPage():
     os.chdir('%s/../docs/' % appdir)
 
     # variables
-    audio = makeAudio()
-    youtube = [makeYoutube()
-    image = makeImage()
-    text = makeText()
+    
 
     # Get templates
     with open('assets/templates/header.html', 'r') as f:
@@ -221,6 +218,6 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        createPage()
+        getInfo()
     except Exception:
         log.exception('Error in main process')
