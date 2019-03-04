@@ -59,7 +59,7 @@ def loadJSON(object):
     os.chdir(appdir)
 
     try:
-
+        print('lol')
     except Exception:
         log.exception('Error loading json file')
 
@@ -232,6 +232,26 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        getInfo()
+        while True:
+            inp = str(input('What would you like to do?\n\
+            add: add new media source\n\
+            clear: remove a media source\n\
+            clearall: clear all media sources\n\
+            create: generate webpage\n\
+            exit: exit.\n'))
+            if inp == 'add':
+                getInfo()
+            elif inp == 'clear':
+                source = str(input('Which source do you want to remove?'))
+                clearJSON(source)
+            elif inp == 'clearall':
+                clearAllJSON()
+            elif inp == 'create':
+                createPage()
+            elif inp == 'exit':
+                break
+            else:
+                print('Input invalid!')
+
     except Exception:
         log.exception('Error in main process')

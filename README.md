@@ -63,4 +63,4 @@ ___
 
   [ ] Finish index.html generator
 
-  [ ] Improve user interface for configuring BAD page
+  [x] Improve user interface for configuring BAD page
