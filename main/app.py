@@ -179,35 +179,28 @@ def getInfo():
 
 
 """ Make blog sections """
-
-def makeAudio():
+# (source = json object)
+def makeAudio(source):
 
     log.info('makeAudio started:')
     os.chdir(jsondir)
 
-    #lists
-    audio=[]
-    sources=[]
+    #TODO:
 
-    for object in os.listdir(jsondir):
-        if object.split('.')[1] != 'txt':
-            with open(object, 'r') as f:
-                x = json.loads(f.read())
-                print(x)
 
     return audio
 
-def makeYoutube():
+def makeYoutube(source):
 
     youtube=[]
     return youtube
 
-def makeImage():
+def makeImage(source):
 
     image=[]
     return image
 
-def makeText():
+def makeText(source):
 
     text=[]
     return text
@@ -220,12 +213,37 @@ def createPage():
     log.info('createPage started:')
     os.chdir(webdir)
 
-    # Generate media HTML
+    # Media HTML lists
+    audio = []
+    youtube = []
+    text = []
+    image = []
+
+    # Iterate through json files to turn media into HTML
     os.chdir(jsondir)
+    for object in os.listdir(jsondir):
+        if object.split('.')[1] != 'txt':
+            with open(object, 'r') as f:
+                source = json.loads(f.read())
 
+                # Make proper media HTML generator function call based on type
+                if source['type'] == 'audio':
+                    post = makeAudio(source)
+                    audio.append(post)
+                elif source['type'] == 'youtube':
+                    post = makeYoutube(source)
+                    youtube.append(post)
+                elif source['type'] == 'image':
+                    post = makeImage(source)
+                    image.append(post)
+                elif source['type'] == 'text':
+                    post = makeText(source)
+                    text.append(post)
+                else:
+                    log.warning('%s is not a usable media type' % source['type'])
+
+    # Get static templates
     os.chdir(webdir)
-
-    # Get templates
     with open('assets/templates/header.html', 'r') as f:
         html = f.read().split('|')
         header = html[1]
