@@ -18,6 +18,8 @@ from bs4 import BeautifulSoup as bs
 
 # Base Directory
 appdir = os.path.dirname(os.path.realpath(__file__))
+jsondir = '%s/json/' % appdir
+webdir = '%s/../docs/' % appdir
 
 # Set Logger
 log = logging.getLogger(__name__)
@@ -83,7 +85,7 @@ def clearAllJSON():
 def clearJSON(object):
 
     log.info('clearJSON(%s) started:' % object)
-    os.chdir('%s/json/' % appdir)
+    os.chdir(jsondir)
 
     # Remove json file
     try:
@@ -114,7 +116,7 @@ def clearJSON(object):
 def getMedia(object):
 
     log.info('getMedia started:')
-    os.chdir('%s/json/' % appdir)
+    os.chdir(jsondir)
     # TODO: Download media locally
 
 
@@ -181,13 +183,13 @@ def getInfo():
 def makeAudio():
 
     log.info('makeAudio started:')
-    os.chdir('%s/json/' % appdir)
+    os.chdir(jsondir)
 
     #lists
     audio=[]
     sources=[]
 
-    for object in os.listdir():
+    for object in os.listdir(jsondir):
         if object.split('.')[1] != 'txt':
             with open(object, 'r') as f:
                 x = json.loads(f.read())
@@ -216,11 +218,12 @@ def makeText():
 def createPage():
 
     log.info('createPage started:')
-    os.chdir('%s/../docs/' % appdir)
+    os.chdir(webdir)
 
-    # variables
-    audio = makeAudio()
+    # Generate media HTML
+    os.chdir(jsondir)
 
+    os.chdir(webdir)
 
     # Get templates
     with open('assets/templates/header.html', 'r') as f:
