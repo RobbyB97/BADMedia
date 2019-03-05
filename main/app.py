@@ -48,9 +48,12 @@ def cleanJSONList():
     for object in jsons:
         if object.split('.')[1] == 'json':
             jsonobjects.append(object.split('.')[0])
+
     with open('jsonlist.txt', 'w') as file:
         for name in jsonobjects:
             file.write('%s,' % name)
+
+    return
 
 
 
@@ -62,9 +65,10 @@ def loadJSON(object):
 
     try:
         print('lol')
+        return
     except Exception:
         log.exception('Error loading json file')
-
+        return
 
 
 
@@ -79,6 +83,8 @@ def clearAllJSON():
         name = file.split('.')[0]
         clearJSON(name)
 
+    return
+
 
 
 """ Clear specific json object """
@@ -92,6 +98,7 @@ def clearJSON(object):
         os.remove('%s.json' % object)
     except:
         log.warning('%s.json doesn\'t exist' % object)
+        return
 
     # Get jsonlist names
     os.chdir(appdir)
@@ -110,6 +117,8 @@ def clearJSON(object):
                 medialist.write('%s,' % name)
     medialist.close()
 
+    return
+
 
 
 """ Reconstruct JSON object with refreshed media links """
@@ -117,7 +126,11 @@ def getMedia(object):
 
     log.info('getMedia started:')
     os.chdir(jsondir)
+
     # TODO: Download media locally
+
+    return
+
 
 
 """ Construct JSON object for HTML page"""
@@ -170,11 +183,16 @@ def getInfo():
             medialist = open('jsonlist.txt', 'a')
             medialist.write(',%s' % medianame)
             medialist.close()
+
+        return
+
     except:
         log.warning('jsonlist.txt not found, creating file...')
         medialist = open('jsonlist.txt', 'w')
         medialist.write('%s,' % medianame)
         medialist.close()
+
+        return
 
 
 
@@ -276,7 +294,36 @@ def createPage():
         # TODO: Fill with content
         f.write(footer)
 
+    return
 
+
+
+def mainMenu():
+
+    log.info('mainMenu started:')
+    os.chdir(appdir)
+
+    inp = str(input('What would you like to do?\n\
+    add: add new media source\n\
+    clear: remove a media source\n\
+    clearall: clear all media sources\n\
+    create: generate webpage\n\
+    exit: exit.\n'))
+    if inp == 'add':
+        getInfo()
+    elif inp == 'clear':
+        source = str(input('Which source do you want to remove?'))
+        clearJSON(source)
+    elif inp == 'clearall':
+        clearAllJSON()
+    elif inp == 'create':
+        createPage()
+    elif inp == 'exit':
+        break
+    else:
+        print('Input invalid!')
+
+    return
 
 
 """ Main Process """
@@ -287,26 +334,8 @@ if __name__ == '__main__':
 
     try:
         makeAudio()
-        """        while True:
-            inp = str(input('What would you like to do?\n\
-            add: add new media source\n\
-            clear: remove a media source\n\
-            clearall: clear all media sources\n\
-            create: generate webpage\n\
-            exit: exit.\n'))
-            if inp == 'add':
-                getInfo()
-            elif inp == 'clear':
-                source = str(input('Which source do you want to remove?'))
-                clearJSON(source)
-            elif inp == 'clearall':
-                clearAllJSON()
-            elif inp == 'create':
-                createPage()
-            elif inp == 'exit':
-                break
-            else:
-                print('Input invalid!')
-                """
+        return
+
     except Exception:
         log.exception('Error in main process')
+        return
