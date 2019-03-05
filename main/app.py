@@ -185,24 +185,36 @@ def makeAudio(source):
     log.info('makeAudio started:')
     os.chdir(jsondir)
 
-    #TODO:
+    #TODO: add posts to proper html template
 
 
     return audio
 
 def makeYoutube(source):
 
-    youtube=[]
+    log.info('makeYoutube started:')
+    os.chdir(jsondir)
+
+    #TODO: add posts to proper html template
+
     return youtube
 
 def makeImage(source):
 
-    image=[]
+    log.info('makeImage started:')
+    os.chdir(jsondir)
+
+    #TODO: add posts to proper html template
+
     return image
 
 def makeText(source):
 
-    text=[]
+    log.info('makeText started:')
+    os.chdir(jsondir)
+
+    #TODO: add posts to proper html template
+
     return text
 
 
