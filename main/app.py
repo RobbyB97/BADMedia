@@ -177,16 +177,36 @@ def getInfo():
 
 
 """ Make blog sections """
+
 def makeAudio():
+
+    log.info('makeAudio started:')
+    os.chdir('%s/json/' % appdir)
+
+    #lists
     audio=[]
+    sources=[]
+
+    for object in os.listdir():
+        if object.split('.')[1] != 'txt':
+            with open(object, 'r') as f:
+                x = json.loads(f.read())
+                print(x)
+
     return audio
+
 def makeYoutube():
+
     youtube=[]
     return youtube
+
 def makeImage():
+
     image=[]
     return image
+
 def makeText():
+
     text=[]
     return text
 
@@ -199,6 +219,7 @@ def createPage():
     os.chdir('%s/../docs/' % appdir)
 
     # variables
+    audio = makeAudio()
 
 
     # Get templates
@@ -232,7 +253,8 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        while True:
+        makeAudio()
+        """        while True:
             inp = str(input('What would you like to do?\n\
             add: add new media source\n\
             clear: remove a media source\n\
@@ -252,6 +274,6 @@ if __name__ == '__main__':
                 break
             else:
                 print('Input invalid!')
-
+                """
     except Exception:
         log.exception('Error in main process')
