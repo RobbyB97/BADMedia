@@ -203,21 +203,31 @@ def makeAudio(source):
     log.info('makeAudio started:')
     os.chdir(jsondir)
 
-    # Variables
-    audio = []
-    template = []
+    audio = [] # HTML output
 
-    i=0
-    for media in source['media']:
-        if i < 10:
-            print(source['media'][media])
-            i += 1
-            print(str(i))
-        else:
-            break
+    # Get audio template
+    try:
+        os.chdir(webdir)
+        with open('./assets/templates/audio/post.html', 'r') as f:
+            audiowrap = f.read().split('|')
+    except Exception:
+        log.exception('Could not find audio post template..')
+
+    i=0 # Counter
+    try:
+        for media in source['media']:
+            if i < 10:
+                audio.append(audiowrap[1])
+                audio.append(source['name'])
+                audio.append(audiowrap[2])
+                audio.append(source['media'][media])
+                i += 1
+            else:
+                break
+    except Exception:
+        log.exception('Could not write audio section HTML...')
 
     #TODO: add posts to proper html template
-
 
     return audio
 
@@ -337,6 +347,7 @@ def mainMenu():
         print('Input invalid!')
 
 
+
 """ Main Process """
 if __name__ == '__main__':
 
@@ -344,7 +355,7 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        createPage()
+        mainMenu()
 
     except Exception:
         log.exception('Error in main process')
