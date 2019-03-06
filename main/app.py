@@ -203,6 +203,19 @@ def makeAudio(source):
     log.info('makeAudio started:')
     os.chdir(jsondir)
 
+    # Variables
+    audio = []
+    template = []
+
+    i=0
+    for media in source['media']:
+        if i < 10:
+            print(source['media'][media])
+            i += 1
+            print(str(i))
+        else:
+            break
+
     #TODO: add posts to proper html template
 
 
@@ -319,11 +332,9 @@ def mainMenu():
     elif inp == 'create':
         createPage()
     elif inp == 'exit':
-        break
+        return
     else:
         print('Input invalid!')
-
-    return
 
 
 """ Main Process """
@@ -333,9 +344,7 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        makeAudio()
-        return
+        createPage()
 
     except Exception:
         log.exception('Error in main process')
-        return
