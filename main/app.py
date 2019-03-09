@@ -16,7 +16,7 @@ import json
 import pytube
 from bs4 import BeautifulSoup as bs
 import htmlgen
-import jsonhandler
+import jsonhandler as jso
 
 # Base Directory
 appdir = os.path.dirname(os.path.realpath(__file__))
@@ -51,14 +51,14 @@ def mainMenu():
     create: generate webpage\n\
     exit: exit.\n'))
     if inp == 'add':
-        getInfo()
+        jso.getInfo()
     elif inp == 'clear':
         source = str(input('Which source do you want to remove?'))
-        clearJSON(source)
+        jso.clearJSON(source)
     elif inp == 'clearall':
-        clearAllJSON()
+        jso.clearAllJSON()
     elif inp == 'create':
-        createPage()
+        htmlgen.createPage()
     elif inp == 'exit':
         return
     else:
