@@ -7,6 +7,8 @@
 
 """
 
+import app
+import htmlgen
 
 
 """ Ensure jsonlist matches JSON objects """
