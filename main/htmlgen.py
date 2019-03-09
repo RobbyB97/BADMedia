@@ -110,25 +110,31 @@ def createPage():
     # Iterate through json files to turn media into HTML
     os.chdir(jsondir)
     for object in os.listdir(jsondir):
+        os.chdir(jsondir)
         if object.split('.')[1] != 'txt':
-            with open(object, 'r') as f:
-                source = json.loads(f.read())
+            try:
+                with open(object, 'r') as f:
+                    source = json.loads(f.read())
 
-                # Make proper media HTML generator function call based on type
-                if source['type'] == 'audio':
-                    post = makeAudio(source)
-                    audio.append(post)
-                elif source['type'] == 'youtube':
-                    post = makeYoutube(source)
-                    youtube.append(post)
-                elif source['type'] == 'image':
-                    post = makeImage(source)
-                    image.append(post)
-                elif source['type'] == 'text':
-                    post = makeText(source)
-                    text.append(post)
-                else:
-                    log.warning('%s is not a usable media type' % source['type'])
+                    # Make proper media HTML generator function call based on type
+                    if source['type'] == 'audio':
+                        post = makeAudio(source)
+                        audio.append(post)
+                    elif source['type'] == 'youtube':
+                        post = makeYoutube(source)
+                        youtube.append(post)
+                    elif source['type'] == 'image':
+                        post = makeImage(source)
+                        image.append(post)
+                    elif source['type'] == 'text':
+                        post = makeText(source)
+                        text.append(post)
+                    else:
+                        log.warning('%s is not a usable media type' % source['type'])
+
+            except Exception:
+                log.exception('%s cannot be opened...')
+                continue
 
     # Get static templates
     os.chdir(webdir)
