@@ -1,8 +1,21 @@
+# Ignore log files
 *.log
 main/*.log
 main/app.log
+
+# Ignore json objects
 main/json/*.json
 main/jsonlist.txt
+
+# Ignore SASS generated files
 docs/assets/css/*.map
 docs/assets/css/.sass-cache
+
+# Ignore final HTML output
 docs/index.html
+
+# Ignore pycache
+main/__pycache__
+main/__pycache__/*
+main/__pycache__/*.pyc
+*.pyc
