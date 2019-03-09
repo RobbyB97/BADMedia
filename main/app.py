@@ -306,14 +306,24 @@ def createPage():
     with open('assets/templates/pages.html', 'r') as f:
         # Look at pages.html for list info
         pages = f.read().split('|')
-        pages.pop(0)
 
     # Write to index.html
     with open('index.html', 'w') as f:
         f.write(header)
         f.write(topbar)
-        for page in pages:
-            f.write(page)
+        f.write(pages[1])
+        for seg in audio:
+            f.write(seg)
+        f.write(pages[2])
+        for seg in youtube:
+            f.write(seg)
+        f.write(pages[3])
+        for seg in image:
+            f.write(seg)
+        f.write(pages[4])
+        for seg in text:
+            f.write(seg)
+        f.write(pages[5])
         # TODO: Fill with content
         f.write(footer)
 
