@@ -56,6 +56,7 @@ def makeAudio(source):
                 audio.append(source['name'])
                 audio.append(audiowrap[2])
                 audio.append(source['media'][media])
+                audio.append(audiowrap[3])
                 i += 1
             else:
                 break
@@ -120,6 +121,7 @@ def createPage():
                     if source['type'] == 'audio':
                         post = makeAudio(source)
                         audio.append(post)
+                        print('POST: \n %s \n' % post)
                     elif source['type'] == 'youtube':
                         post = makeYoutube(source)
                         youtube.append(post)
@@ -145,24 +147,31 @@ def createPage():
     with open('assets/templates/topbar.html', 'r') as f:
         topbar = f.read()
     with open('assets/templates/pages.html', 'r') as f:
-        # Look at pages.html for list info
-        pages = f.read().split('|')
+        pages = f.read().split('|') # Look at pages.html for list info
 
     # Write to index.html
     with open('index.html', 'w') as f:
         f.write(header)
         f.write(topbar)
         f.write(pages[1])
-        for seg in audio:
-            f.write(seg)
+        i = 0
+        while i < len(audio):
+            j = 0
+            while j < len(audio[i]):
+                f.write(audio[i][j])
+                j += 1
+            i += 1
         f.write(pages[2])
         for seg in youtube:
+            seg = str(seg)
             f.write(seg)
         f.write(pages[3])
         for seg in image:
+            seg = str(seg)
             f.write(seg)
         f.write(pages[4])
         for seg in text:
+            seg = str(seg)
             f.write(seg)
         f.write(pages[5])
         # TODO: Fill with content
