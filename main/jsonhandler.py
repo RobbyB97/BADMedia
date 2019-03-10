@@ -12,6 +12,9 @@ import htmlgen
 import os
 import json
 import logging
+import eyed3
+
+
 
 # Base Directory
 appdir = os.path.dirname(os.path.realpath(__file__))
@@ -31,6 +34,8 @@ consoleHandler.setFormatter(formatter)
 log.addHandler(consoleHandler)
 log.addHandler(handler)
 log.info('Running file ~/main/jsonhandler.py:')
+
+
 
 """ Ensure jsonlist matches JSON objects """
 def cleanJSONList():

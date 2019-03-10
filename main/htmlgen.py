@@ -11,6 +11,9 @@ import app
 import jsonhandler
 import json
 import logging
+import eyed3
+import requests
+from time import sleep
 
 # Base Directory
 appdir = os.path.dirname(os.path.realpath(__file__))
@@ -52,10 +55,11 @@ def makeAudio(source):
     try:
         for media in source['media']:
             if i < 10:
+                link = source['media'][media]
                 audio.append(audiowrap[1])
                 audio.append(source['name'])
                 audio.append(audiowrap[2])
-                audio.append(source['media'][media])
+                audio.append(link)
                 audio.append(audiowrap[3])
                 i += 1
             else:
@@ -121,7 +125,6 @@ def createPage():
                     if source['type'] == 'audio':
                         post = makeAudio(source)
                         audio.append(post)
-                        print('POST: \n %s \n' % post)
                     elif source['type'] == 'youtube':
                         post = makeYoutube(source)
                         youtube.append(post)
