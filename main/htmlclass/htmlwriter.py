@@ -10,6 +10,9 @@
 # External Libraries
 import os
 
+# Set Logger
+log = logging.getLogger('BADMedia')
+
 # Base Directory
 appdir = os.path.dirname(os.path.realpath(__file__))
 jsondir = '%s/json/' % appdir
