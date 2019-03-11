@@ -44,8 +44,20 @@ log.addHandler(consoleHandler)
 log.addHandler(handler)
 log.info('Running file ~/main/app.py:')
 
+# Variables for storing classes
+global audios
+global youtubes
+global images
+global texts
+global htmler
 
 
+""" Load up json objects """
+def startup():
+
+
+
+""" Take user input to decide what to do """
 def mainMenu():
 
     log.info('mainMenu started:')
