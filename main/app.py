@@ -26,9 +26,9 @@ import htmlgen
 import jsonhandler as jso
 import mediaclass.audiotype
 import htmlclass.htmlwriter as html
+import mediaclass.youtubetype
 import mediaclass.imagetype
 import mediaclass.texttype
-import mediaclass.youtubetype
 
 # Set Logger
 log = logging.getLogger('BADMedia')
@@ -80,6 +80,43 @@ def mainMenu():
         print('Input invalid!')
 
 
+
+""" Menu for class version """
+def menu():
+    log.info('mainMenu started:')
+    os.chdir(appdir)
+
+    inp = str(input('What would you like to do?\n\
+    add: add new media source\n\
+    clear: remove a media source\n\
+    clearall: clear all media sources\n\
+    create: generate webpage\n\
+    exit: exit.\n'))
+    if inp == 'add':
+        answer = str(input('What type of media?\n\
+        audio: an podcast or other audio stream\n\
+        youtube: a youtube channel\n\
+        image: an image feed\n\
+        text: a text article feed\n\
+        back: back to menu.\n'))
+        if answer == 'audio':
+            media = audiotype.Audio()
+            audios.append(media)
+        elif answer == 'youtube':
+            media = youtubetype.YouTube()
+            youtubes.append(media)
+        elif answer == 'image':
+            media = imagetype.Image()
+            images.append(media)
+        elif answer == 'text':
+            media = texttype.Text()
+            texts.append(media)
+        elif answer == 'back':
+            menu()
+        else:
+            print('Input invalid!')
+    else:
+        print('Input invalid!')
 
 """ Main Process """
 if __name__ == '__main__':
