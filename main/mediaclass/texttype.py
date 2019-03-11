@@ -19,16 +19,6 @@ webdir = '%s/../docs/' % appdir
 
 # Set Logger
 log = logging.getLogger('BADMedia')
-log.setLevel(logging.WARNING)
-handlerpath = appdir + '/app.log'
-handler = logging.FileHandler(handlerpath)
-handler.setLevel(logging.DEBUG)
-consoleHandler = logging.StreamHandler()
-formatter = logging.Formatter('[%(levelname)s]: %(message)s')
-handler.setFormatter(formatter)
-consoleHandler.setFormatter(formatter)
-log.addHandler(consoleHandler)
-log.addHandler(handler)
 
 
 
