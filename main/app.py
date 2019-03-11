@@ -24,7 +24,7 @@ webdir = '%s/../docs/' % appdir
 # Internal Libraries
 import htmlgen
 import jsonhandler as jso
-import mediaclass.audiotype
+from mediaclass import audiotype
 import htmlclass.htmlwriter as html
 import mediaclass.youtubetype
 import mediaclass.imagetype
@@ -125,7 +125,7 @@ if __name__ == '__main__':
     os.chdir(appdir)
 
     try:
-        mainMenu()
+        menu()
 
     except Exception:
         log.exception('Error in main process')
