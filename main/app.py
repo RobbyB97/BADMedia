@@ -51,6 +51,8 @@ images = []         # Image media object instances appended here
 texts = []          # Text media object instances appended here
 htmler = html.Writer()  # Object that generates HTML file
 
+
+
 """ Take user input to decide what to do """
 def mainMenu():
 
