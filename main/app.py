@@ -20,7 +20,7 @@ from bs4 import BeautifulSoup as bs
 import htmlgen
 import jsonhandler as jso
 import audiotype
-import htmlwriter
+import htmlwriter as html
 import imagetype
 import texttype
 import youtubetype
@@ -45,11 +45,11 @@ log.addHandler(handler)
 log.info('Running file ~/main/app.py:')
 
 # Variables for storing classes
-audios = []
-youtubes = []
-images = []
-texts = []
-htmler = htmlwriter.Writer()
+audios = []         # Audio media object instances appended here
+youtubes = []       # Youtube media object instances appended here
+images = []         # Image media object instances appended here
+texts = []          # Text media object instances appended here
+htmler = html.Writer()  # Object that generates HTML file
 
 """ Take user input to decide what to do """
 def mainMenu():
