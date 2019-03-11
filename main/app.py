@@ -25,10 +25,10 @@ webdir = '%s/../docs/' % appdir
 import htmlgen
 import jsonhandler as jso
 from mediaclass import audiotype
-import htmlclass.htmlwriter as html
-import mediaclass.youtubetype
-import mediaclass.imagetype
-import mediaclass.texttype
+from htmlclass import htmlwriter as html
+from mediaclass import youtubetype
+from mediaclass import imagetype
+from mediaclass import texttype
 
 # Set Logger
 log = logging.getLogger('BADMedia')
