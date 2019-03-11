@@ -45,3 +45,9 @@ class Audio:
 
         self.saveToJSON()
         return
+
+    def saveToJSON(self):
+        masterdict = {}     # Final JSON object
+        masterdict['type'] = self.type
+        masterdict['name'] = self.name
+        masterdict['xml'] = self.link
