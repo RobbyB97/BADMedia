@@ -18,6 +18,21 @@ $(document).ready(function() {
   $("#navbutton").click(function() {
     toggleNav();
   });
+  $("#homebutton").click(function() {
+    homepage();
+  });
+  $("#audiobutton").click(function() {
+    audiopage();
+  });
+  $("#imagebutton").click(function() {
+    imagepage();
+  });
+  $("#textbutton").click(function() {
+    textpage();
+  });
+  $("#youtubebutton").click(function() {
+    youtubepage();
+  })
 
   homepage();
 
