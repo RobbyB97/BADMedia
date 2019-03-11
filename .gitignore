@@ -15,10 +15,16 @@ docs/assets/css/.sass-cache
 docs/index.html
 
 # Ignore pycache
+*.pyc
 main/__pycache__
 main/__pycache__/*
 main/__pycache__/*.pyc
-*.pyc
+main/mediaclass/__pycache__
+main/mediaclass/__pycache__/*
+main/mediaclass/__pycache__/*.pyc
+main/htmlclass/__pycache__
+main/htmlclass/__pycache__/*
+main/htmlclass/__pycache__/*.pyc
 
 # Ignore media files
 *.mp3
