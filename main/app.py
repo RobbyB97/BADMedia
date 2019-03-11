@@ -7,16 +7,23 @@
 
 """
 
+# External Libraries
 import requests
-from urllib import request
 import os
 from time import sleep
 import logging
 import json
 import pytube
 from bs4 import BeautifulSoup as bs
+
+# Internal Libraries
 import htmlgen
 import jsonhandler as jso
+import audiotype
+import htmlwriter
+import imagetype
+import texttype
+import youtubetype
 
 # Base Directory
 appdir = os.path.dirname(os.path.realpath(__file__))
