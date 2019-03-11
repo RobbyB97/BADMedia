@@ -17,18 +17,14 @@ import json
 import pytube
 from bs4 import BeautifulSoup as bs
 
-# Add python file directories to sys path
-sys.path.insert(0, '/media/')
-sys.path.insert(0, '/html/')
-
 # Internal Libraries
 import htmlgen
 import jsonhandler as jso
-import audiotype
-import htmlwriter as html
-import imagetype
-import texttype
-import youtubetype
+import media.audiotype
+import html.htmlwriter as html
+import media.imagetype
+import media.texttype
+import media.youtubetype
 
 # Base Directory
 appdir = os.path.dirname(os.path.realpath(__file__))
