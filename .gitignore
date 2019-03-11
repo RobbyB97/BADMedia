@@ -19,3 +19,6 @@ main/__pycache__
 main/__pycache__/*
 main/__pycache__/*.pyc
 *.pyc
+
+# Ignore media files
+*.mp3
