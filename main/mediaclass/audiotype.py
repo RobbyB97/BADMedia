@@ -12,11 +12,6 @@ import app
 import json
 import logging
 
-# Base Directory
-appdir = os.path.dirname(os.path.realpath(__file__))
-jsondir = '%s/json/' % appdir
-webdir = '%s/../docs/' % appdir
-
 # Set Logger
 log = logging.getLogger('BADMedia')
 log.setLevel(logging.WARNING)
@@ -33,7 +28,10 @@ log.addHandler(handler)
 
 
 class Audio:
-    def __init__(self, filename = None):
+    def __init__(self, dir, filename = None):
+        self.appdir = dir
+        self.jsondir = '%s/json/' % appdir
+        self.webdir = '%s/../docs/' % appdir
         if filename != None:
             self.jsonobject = json.loads('%s%s.json' % (jsondir, filename))
             self.name = self.jsonobject['name']

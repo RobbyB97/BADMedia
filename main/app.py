@@ -100,7 +100,7 @@ def menu():
         text: a text article feed\n\
         back: back to menu.\n'))
         if answer == 'audio':
-            media = audiotype.Audio()
+            media = audiotype.Audio(dir=appdir)
             audios.append(media)
         elif answer == 'youtube':
             media = youtubetype.YouTube()
