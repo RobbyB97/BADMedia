@@ -12,6 +12,18 @@ import jsonhandler
 import json
 import logging
 
+log = logging.getLogger('BADMedia')
+log.setLevel(logging.WARNING)
+handlerpath = appdir + '/app.log'
+handler = logging.FileHandler(handlerpath)
+handler.setLevel(logging.DEBUG)
+consoleHandler = logging.StreamHandler()
+formatter = logging.Formatter('[%(levelname)s]: %(message)s')
+handler.setFormatter(formatter)
+consoleHandler.setFormatter(formatter)
+log.addHandler(consoleHandler)
+log.addHandler(handler)
+
 # Base Directory
 appdir = os.path.dirname(os.path.realpath(__file__))
 jsondir = '%s/json/' % appdir

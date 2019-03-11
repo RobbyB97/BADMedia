@@ -12,7 +12,8 @@ import os
 import json
 import logging
 import eyed3
-
+import requests
+from bs4 import BeautifulSoup as bs
 
 
 # Base Directory
@@ -21,7 +22,7 @@ jsondir = '%s/json/' % appdir
 webdir = '%s/../docs/' % appdir
 
 # Set Logger
-log = logging.getLogger(__name__)
+log = logging.getLogger('BADMedia')
 log.setLevel(logging.WARNING)
 handlerpath = appdir + '/app.log'
 handler = logging.FileHandler(handlerpath)
@@ -32,7 +33,6 @@ handler.setFormatter(formatter)
 consoleHandler.setFormatter(formatter)
 log.addHandler(consoleHandler)
 log.addHandler(handler)
-log.info('Running file ~/main/jsonhandler.py:')
 
 
 

@@ -24,7 +24,7 @@ jsondir = '%s/json/' % appdir
 webdir = '%s/../docs/' % appdir
 
 # Set Logger
-log = logging.getLogger(__name__)
+log = logging.getLogger('BADMedia')
 log.setLevel(logging.WARNING)
 handlerpath = appdir + '/app.log'
 handler = logging.FileHandler(handlerpath)
