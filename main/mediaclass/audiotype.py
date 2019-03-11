@@ -8,7 +8,7 @@
 
 # External Libraries
 import os
-import app
+from bs4 import BeautifulSoup as bs
 import json
 import logging
 
@@ -45,6 +45,9 @@ class Audio:
 
         self.saveToJSON()
         return
+
+    def getMedia(self):
+        # Update list of media links from RSS feed
 
     def saveToJSON(self):
         masterdict = {}     # Final JSON object
