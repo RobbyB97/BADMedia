@@ -6,9 +6,8 @@
 
 """
 
+# External Libraries
 import os
-import app
-import jsonhandler
 import json
 import logging
 import eyed3
@@ -32,6 +31,8 @@ handler.setFormatter(formatter)
 consoleHandler.setFormatter(formatter)
 log.addHandler(consoleHandler)
 log.addHandler(handler)
+
+
 
 """ Make blog sections """
 # (source = json object)

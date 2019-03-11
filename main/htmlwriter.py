@@ -6,3 +6,15 @@
     and generating a webpage from them
 
 """
+
+# External Libraries
+import os
+
+# Base Directory
+appdir = os.path.dirname(os.path.realpath(__file__))
+jsondir = '%s/json/' % appdir
+webdir = '%s/../docs/' % appdir
+
+class Writer:
+    def __init__(self):
+        self.path  = webdir

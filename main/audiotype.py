@@ -6,12 +6,18 @@
 
 """
 
+# External Libraries
 import os
 import app
-import jsonhandler
 import json
 import logging
 
+# Base Directory
+appdir = os.path.dirname(os.path.realpath(__file__))
+jsondir = '%s/json/' % appdir
+webdir = '%s/../docs/' % appdir
+
+# Set Logger
 log = logging.getLogger('BADMedia')
 log.setLevel(logging.WARNING)
 handlerpath = appdir + '/app.log'
@@ -24,13 +30,11 @@ consoleHandler.setFormatter(formatter)
 log.addHandler(consoleHandler)
 log.addHandler(handler)
 
-# Base Directory
-appdir = os.path.dirname(os.path.realpath(__file__))
-jsondir = '%s/json/' % appdir
-webdir = '%s/../docs/' % appdir
+
 
 class Audio:
-    def __init__(self, filename):
-        self.jsonobject = json.loads('%s%s.json' % (jsondir, filename))
-        self.name = self.jsonobject['name']
-        self.media = self.jsonobject['media']
+    def __init__(self, filename = None):
+        if filename != None:
+            self.jsonobject = json.loads('%s%s.json' % (jsondir, filename))
+            self.name = self.jsonobject['name']
+            self.media = self.jsonobject['media']
