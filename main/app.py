@@ -17,6 +17,10 @@ import json
 import pytube
 from bs4 import BeautifulSoup as bs
 
+# Add python file directories to sys path
+sys.path.insert(0, '/media/')
+sys.path.insert(0, '/html/')
+
 # Internal Libraries
 import htmlgen
 import jsonhandler as jso
