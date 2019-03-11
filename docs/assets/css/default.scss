@@ -79,6 +79,30 @@ $font-small: 0.8em;
   @media #{$desktop} {
     width: 20vw;
   }
+  a {
+    clear: both;
+    font-size: $font-title;
+    color: white;
+    opacity: 1;
+    text-decoration: none;
+    @media #{$phone} {
+      &:hover {
+        color: white;
+      }
+      &:focus {
+        color: white;
+      }
+    }
+    @media #{$desktop} {
+      &:hover {
+        color: white;
+        opacity: 0.8;
+      }
+      &:focus {
+        opacity: 1;
+      }
+    }
+  }
 }
 
 #navbutton {
@@ -114,5 +138,5 @@ $font-small: 0.8em;
 }
 
 #audio {
-  
+
 }

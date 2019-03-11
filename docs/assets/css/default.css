@@ -2,7 +2,8 @@
 
   Author: Robby Bergers
 
-  This is the SASS file used to style the BADMedia webpage
+  This is the default SASS file used to style the BADMedia webpage, used to
+  style elements common to every BADMedia subpage
 
 */
 /*
@@ -48,6 +49,23 @@
   @media only screen and (min-width: 1200px) {
     #nav {
       width: 20vw; } }
+  #nav a {
+    clear: both;
+    font-size: 2em;
+    color: white;
+    opacity: 1;
+    text-decoration: none; }
+    @media only screen and (min-width: 200px) {
+      #nav a:hover {
+        color: white; }
+      #nav a:focus {
+        color: white; } }
+    @media only screen and (min-width: 1200px) {
+      #nav a:hover {
+        color: white;
+        opacity: 0.8; }
+      #nav a:focus {
+        opacity: 1; } }
 
 #navbutton {
   position: fixed;
