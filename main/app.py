@@ -14,22 +14,21 @@ import os
 from time import sleep
 import logging
 import json
-import pytube
 from bs4 import BeautifulSoup as bs
-
-# Internal Libraries
-import htmlgen
-import jsonhandler as jso
-import media.audiotype
-import html.htmlwriter as html
-import media.imagetype
-import media.texttype
-import media.youtubetype
 
 # Base Directory
 appdir = os.path.dirname(os.path.realpath(__file__))
 jsondir = '%s/json/' % appdir
 webdir = '%s/../docs/' % appdir
+
+# Internal Libraries
+import htmlgen
+import jsonhandler as jso
+import mediaclass.audiotype
+import htmlclass.htmlwriter as html
+import mediaclass.imagetype
+import mediaclass.texttype
+import mediaclass.youtubetype
 
 # Set Logger
 log = logging.getLogger('BADMedia')
