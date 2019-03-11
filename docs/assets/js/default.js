@@ -32,7 +32,7 @@ $(document).ready(function() {
   });
   $("#youtubebutton").click(function() {
     youtubepage();
-  })
+  });
 
   homepage();
 
