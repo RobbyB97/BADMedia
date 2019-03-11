@@ -25,7 +25,7 @@ class Audio:
         self.webdir = '%s/../docs/' % dir
 
         if filename:    # If reference to json file exists
-            self.jsonobject = json.loads('%s%s.json' % (jsondir, filename))
+            self.jsonobject = json.loads('%s%s.json' % (self.jsondir, filename))
             self.name = self.jsonobject['name']
             self.link = self.jsonobject['xml']
             self.media = self.jsonobject['media']
