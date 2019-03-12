@@ -3,7 +3,7 @@
     Author: Robby Bergers
 
     This is the class used to handle youtube type media
-
+    
 """
 
 # External Libraries
@@ -36,3 +36,15 @@ class Youtube(Media):
         self.type = 'youtube'
         Media.getInfo(self)
         return
+
+
+    def getHTML(self):
+        log.info('Youtube.getHTML started...')
+
+        # Parse HTML post template
+        try:
+            os.chdir(self.webdir)
+            with open('./assets/templates/youtube/post.html', 'r') as f:
+                self.wrap = f.read.split('|')
+        except Exception:
+            log.exception('Could not find youtube post template...')
