@@ -63,11 +63,13 @@ class Audio:
 
         self.media = {}     # Reset list of audio links
 
-        # Update list of media links from RSS feed
+        # Get XML file
         try:
             xml = requests.get(self.link).text
         except Exception:
             log.exception('Error loading XML from %s...' % self.link)
+
+        # Parse and scrape audio file links
         soup = bs(xml, "lxml")
         i=0 # Counter, serves as ID for each entry
         for element in soup.findAll(self.tag):
