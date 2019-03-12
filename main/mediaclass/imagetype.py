@@ -11,6 +11,9 @@ import os
 import json
 import logging
 
+# Internal Libraries
+import media
+
 # Set Logger
 log = logging.getLogger('BADMedia')
 
@@ -18,7 +21,7 @@ log = logging.getLogger('BADMedia')
 
 class Image:
 
-    
+
     def __init__(self, dir, filename = None):
         # Set base project directories
         self.appdir = dir

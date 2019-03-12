@@ -11,6 +11,9 @@ import os
 import json
 import logging
 
+# Internal Libraries
+import media
+
 # Set Logger
 log = logging.getLogger('BADMedia')
 
