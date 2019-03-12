@@ -43,7 +43,7 @@ class BADMedia:
 
 
     def __init__(self):
-        log.info('New BADMedia class initializing...')
+        log.debug('New BADMedia class initializing...')
 
         # Base Directory
         self.appdir = os.path.dirname(os.path.realpath(__file__))
@@ -62,11 +62,18 @@ class BADMedia:
 
 
     def load(self):
-        log.info('Loading BADMedia...')
+        log.debug('Loading BADMedia...')
+
+        os.chdir(self.jsondir)
+        for file in os.listdir(self.jsondir):
+            with open(file, 'r') as f:
+                jso = json.loads(f.read())
+                print('TEST \n %s \n' % jso)
+        return
 
 
     def menu(self):
-        log.info('menu started:')
+        log.debug('menu started:')
         os.chdir(self.appdir)
 
         inp = str(input('What would you like to do?\n\
@@ -99,6 +106,9 @@ class BADMedia:
                 self.menu()
             else:
                 print('Input invalid!')
+
+        elif inp == 'test':     # Placeholder for testing features
+            self.load()
         #TODO: Add clear option
         #TODO: Add clearall option
         #TODO: Add create option
