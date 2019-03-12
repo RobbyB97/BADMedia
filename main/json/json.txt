@@ -1,11 +1,12 @@
 {
-  "medianame": (title given by user),
-  "mediatype": (audio, video, text, image or youtube),
-  "tagname": (tag enclosing media in XML file),
+  "media": "(title given by user)",
+  "type": "(video, text, image or youtube)",
+  "tag": "(tag enclosing media in XML file)",
+  "xml": "(link to XML file)",
   "media": {
-            "1": (url),
-            "2": (url),
-            "3": (url),
+            "1": "(url)",
+            "2": "(url)",
+            "3": "(url)",
             ...,
            },
 }
