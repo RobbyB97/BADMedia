@@ -30,7 +30,7 @@ class Audio(Media):
         return
 
 
-    """def getInfo(self):
+    def getInfo(self):
         log.info('Audio.getInfo started...')
         print('AUDIO GETINFO')
         # Get object information from user
@@ -42,7 +42,7 @@ class Audio(Media):
             self.tag = 'enclosure'
 
         self.saveToJSON()
-        return"""
+        return
 
 
     def getMedia(self):
