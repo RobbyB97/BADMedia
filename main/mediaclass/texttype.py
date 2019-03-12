@@ -6,9 +6,8 @@
 
 """
 
+# External Libraries
 import os
-import app
-import jsonhandler
 import json
 import logging
 
@@ -23,7 +22,7 @@ class Text:
         self.appdir = dir
         self.jsondir = '%s/json/' % dir
         self.webdir = '%s/../docs/' % dir
-        
+
         self.jsonobject = json.loads('%s%s.json' % (jsondir, filename))
         self.name = self.jsonobject['name']
         self.media = self.jsonobject['media']
