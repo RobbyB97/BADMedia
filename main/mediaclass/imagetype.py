@@ -17,6 +17,8 @@ log = logging.getLogger('BADMedia')
 
 
 class Image:
+
+    
     def __init__(self, dir, filename = None):
         # Set base project directories
         self.appdir = dir
