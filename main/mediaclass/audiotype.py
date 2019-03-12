@@ -105,3 +105,11 @@ class Audio:
 
     def clearJSON(self):
         log.info('%s.clearJSON started...' % self.name)
+
+        # Remove class instances' JSON file if it exists
+        os.chdir(self.jsondir)
+        try:
+            os.remove('%s.json' % self.name)
+        except:
+            log.warning('%s.json doesn\'t exist.' % self.name)
+        return
