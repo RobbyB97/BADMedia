@@ -22,8 +22,8 @@ class Audio:
 
 
     def __init__(self, dir, filename = None):
-
         log.info('New Audio class initializing...')
+
         # Set base project directories
         self.appdir = dir
         self.jsondir = '%s/json/' % dir
@@ -46,6 +46,7 @@ class Audio:
 
 
     def getInfo(self):
+        log.info('%s.getInfo started...' % self.name)
 
         # Get object information from user
         self.type = 'audio'
@@ -60,6 +61,7 @@ class Audio:
 
 
     def getMedia(self):
+        log.info('%s.getMedia started...' % self.name)
 
         self.media = {}     # Reset list of audio links
 
@@ -80,6 +82,7 @@ class Audio:
 
 
     def saveToJSON(self):
+        log.info('%s.saveToJSON started...' % self.name)
 
         self.getMedia()     # Refresh post entries
 
@@ -98,3 +101,7 @@ class Audio:
         jsonfile.write(json_str)
         jsonfile.close()
         return
+
+
+    def clearJSON(self):
+        log.info('%s.clearJSON started...' % self.name)
