@@ -36,3 +36,15 @@ class Image(Media):
         self.type = 'image'
         Media.getInfo(self)
         return
+
+
+    def getHTML(self):
+        log.info('Image.getHTML started...')
+
+        # Parse HTML post template
+        try:
+            os.chdir(self.webdir)
+            with open('./assets/templates/image/post.html', 'r') as f:
+                self.wrap = f.read.split('|')
+        except Exception:
+            log.exception('Could not find image post template...')
