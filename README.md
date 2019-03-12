@@ -41,26 +41,3 @@ ___
   ```
   This is the format of a feeds corresponding json object. the "media" key can hold any number of URLs.
 ___
-
-## TODO
-
-
-  [x] Directory structure
-
-  [x] Get data from user
-
-  [x] Store JSON objects
-
-  [x] Maintain / verify JSON objects
-
-  [x] Add docs structure
-
-  [x] Main HTML templates
-
-  [x] Create SASS / JS assets
-
-  [ ] Create post templates
-
-  [ ] Finish index.html generator
-
-  [x] Improve user interface for configuring BAD page
