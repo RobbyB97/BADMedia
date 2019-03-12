@@ -48,3 +48,5 @@ class Audio(Media):
             os.chdir(self.webdir)
             with open('./assets/templates/audio/post.html', 'r') as f:
                 self.wrap = f.read.split('|')
+        except Exception:
+            log.exception('Could not find audio post template...')
