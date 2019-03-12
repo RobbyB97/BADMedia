@@ -38,3 +38,13 @@ class Audio(Media):
         self.type = 'audio'
         Media.getInfo(self)
         return
+
+
+    def getHTML(self):
+        log.info('Audio.getHTML started...')
+
+        # Parse HTML post template
+        try:
+            os.chdir(self.webdir)
+            with open('./assets/templates/audio/post.html', 'r') as f:
+                self.wrap = f.read.split('|')
