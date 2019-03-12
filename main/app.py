@@ -49,7 +49,7 @@ audios = []         # Audio media object instances appended here
 youtubes = []       # Youtube media object instances appended here
 images = []         # Image media object instances appended here
 texts = []          # Text media object instances appended here
-htmler = html.Writer()  # Object that generates HTML file
+htmler = html.Writer(dir=appdir)  # Object that generates HTML file
 
 
 

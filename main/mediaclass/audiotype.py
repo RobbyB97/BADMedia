@@ -72,6 +72,7 @@ class Audio:
         for element in soup.findAll(self.tag):
             self.media[str(i)] = element['url']
             i += 1
+        log.info('Found %s files in XML...' % str(len(self.media)))
         return
 
 
@@ -89,7 +90,7 @@ class Audio:
 
         # Store in json file
         os.chdir(self.jsondir)
-        jsonfile = open('./json/%s.json' % self.name, 'w')
+        jsonfile = open('%s.json' % self.name, 'w+')
         json_str = json.dumps(masterdict, sort_keys=True, indent=4)
         jsonfile.write(json_str)
         jsonfile.close()
