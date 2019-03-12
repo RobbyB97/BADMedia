@@ -19,7 +19,9 @@ log = logging.getLogger('BADMedia')
 
 
 
-class Youtube:
+class Youtube(Media):
+
+    
     def __init__(self, dir, filename = None):
         self.jsonobject = json.loads('%s%s.json' % (jsondir, filename))
         self.name = self.jsonobject['name']

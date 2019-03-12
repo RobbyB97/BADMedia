@@ -19,7 +19,7 @@ log = logging.getLogger('BADMedia')
 
 
 
-class Image:
+class Image(Media):
 
 
     def __init__(self, dir, filename = None):

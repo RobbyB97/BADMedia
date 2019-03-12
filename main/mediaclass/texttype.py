@@ -19,7 +19,7 @@ log = logging.getLogger('BADMedia')
 
 
 
-class Text:
+class Text(Media):
     def __init__(self, dir, filename = None):
         # Set base project directories
         self.appdir = dir
