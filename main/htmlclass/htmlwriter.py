@@ -16,7 +16,22 @@ log = logging.getLogger('BADMedia')
 
 
 class Writer:
+
+
     def __init__(self, dir):
+        
+        # Load base project directories
         self.appdir = dir
         self.jsondir = '%s/json/' % dir
         self.webdir = '%s/../docs/' % dir
+        return
+
+
+    def loadMedia(self, audio = None, youtube = None, text = None, image = None):
+
+    	# Set lists of media objects
+    	self.audio = audio
+    	self.youtube = youtube
+    	self.text = text
+    	self.image = image
+    	return
