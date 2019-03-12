@@ -8,6 +8,7 @@
 
 # External Libraries
 import os
+import logging
 
 # Set Logger
 log = logging.getLogger('BADMedia')
