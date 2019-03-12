@@ -63,12 +63,28 @@ class BADMedia:
 
     def load(self):
         log.debug('Loading BADMedia...')
-
         os.chdir(self.jsondir)
+
+        # Load each JSON object from jsondir
         for file in os.listdir(self.jsondir):
             with open(file, 'r') as f:
                 jso = json.loads(f.read())
-                print('TEST \n %s \n' % jso)
+
+            # Create appropriate class instance
+            if jso['type'] == 'audio':
+                media = Audio(dir=self.appdir, filename=file)
+                self.audios.append(media)
+            elif jso['type'] == 'image':
+                media = Image(dir=self.appdir, filename=file)
+                self.images.append(media)
+            elif jso['type'] == 'text':
+                media = Text(dir=self.appdir, filename=file)
+                self.texts.append(media)
+            elif jso['type'] == 'youtube':
+                media = Youtube(dir=self.appdir, filename=file)
+                self.youtubes.append(media)
+            else:
+                log.warning('%s is not properly formatted' % str(file))
         return
 
 
