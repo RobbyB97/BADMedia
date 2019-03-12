@@ -24,7 +24,7 @@ from mediaclass import texttype
 
 # Set Logger
 log = logging.getLogger('BADMedia')
-log.setLevel(logging.WARNING)
+log.setLevel(logging.INFO)
 handlerpath = os.path.dirname(os.path.realpath(__file__)) + '/app.log'
 handler = logging.FileHandler(handlerpath)
 handler.setLevel(logging.DEBUG)
@@ -55,6 +55,13 @@ class BADMedia:
         self.youtubes = []
         self.images = []
         self.texts = []
+
+        self.load()
+        return
+
+
+    def load(self):
+        log.info('Loading BADMedia...')
 
 
     def menu(self):
@@ -96,6 +103,7 @@ class BADMedia:
         #TODO: Add create option
         else:
             print('Input invalid!')
+        return
 
 
 
@@ -108,3 +116,4 @@ if __name__ == '__main__':
 
     except Exception:
         log.exception('Error in main process')
+    return
