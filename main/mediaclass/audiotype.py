@@ -22,13 +22,18 @@ class Audio:
 
     def __init__(self, dir, filename = None):
 
+        log.info('New Audio class initializing...')
         # Set base project directories
         self.appdir = dir
         self.jsondir = '%s/json/' % dir
         self.webdir = '%s/../docs/' % dir
 
         if filename:    # If reference to json file exists
-            self.jsonobject = json.loads('%s%s.json' % (self.jsondir, filename))
+            try:
+                self.jsonobject = json.loads('%s%s.json' % (self.jsondir, filename))
+            except Exception:
+                log.exception('Error loading %s.json. Creating new media source...')
+                self.getInfo()
             self.name = self.jsonobject['name']
             self.link = self.jsonobject['xml']
             self.media = self.jsonobject['media']
@@ -58,7 +63,10 @@ class Audio:
         self.media = {}     # Reset list of audio links
 
         # Update list of media links from RSS feed
-        xml = requests.get(self.link).text
+        try:
+            xml = requests.get(self.link).text
+        except Exception:
+            log.exception('Error loading XML from %s...' % self.link)
         soup = bs(xml, "lxml")
         i=0 # Counter, serves as ID for each entry
         for element in soup.findAll(self.tag):
@@ -85,3 +93,4 @@ class Audio:
         json_str = json.dumps(masterdict, sort_keys=True, indent=4)
         jsonfile.write(json_str)
         jsonfile.close()
+        return
