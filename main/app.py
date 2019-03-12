@@ -51,7 +51,7 @@ class BADMedia:
         self.webdir = '%s/../docs/' % self.appdir
 
         # Create class lists / html writer class instance
-        self.htmls = html.Writer(dir=self.appdir)
+        self.htmls = Writer(dir=self.appdir)
         self.audios = []
         self.youtubes = []
         self.images = []

@@ -23,11 +23,7 @@ class Image(Media):
 
 
     def __init__(self, dir, filename = None):
-        # Set base project directories
-        self.appdir = dir
-        self.jsondir = '%s/json/' % dir
-        self.webdir = '%s/../docs/' % dir
+        log.info('New Image class initializing...')
 
-        self.jsonobject = json.loads('%s%s.json' % (jsondir, filename))
-        self.name = self.jsonobject['name']
-        self.media = self.jsonobject['media']
+        Media.__init__(self, dir, filename = None)
+        return

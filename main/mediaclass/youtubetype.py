@@ -21,8 +21,9 @@ log = logging.getLogger('BADMedia')
 
 class Youtube(Media):
 
-    
+
     def __init__(self, dir, filename = None):
-        self.jsonobject = json.loads('%s%s.json' % (jsondir, filename))
-        self.name = self.jsonobject['name']
-        self.media = self.jsonobject['media']
+        log.info('New Youtube class initializing...')
+
+        Media.__init__(self, dir, filename = None)
+        return
