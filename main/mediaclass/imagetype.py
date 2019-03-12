@@ -12,7 +12,7 @@ import json
 import logging
 
 # Internal Libraries
-import media
+from mediaclass.media import Media
 
 # Set Logger
 log = logging.getLogger('BADMedia')

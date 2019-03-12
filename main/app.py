@@ -16,11 +16,12 @@ import json
 from bs4 import BeautifulSoup as bs
 
 # Internal Libraries
-from mediaclass import audiotype
-from htmlclass import htmlwriter as html
-from mediaclass import youtubetype
-from mediaclass import imagetype
-from mediaclass import texttype
+from mediaclass.audiotype import Audio
+from htmlclass.htmlwriter import Writer
+from mediaclass.youtubetype import Youtube
+from mediaclass.imagetype import Image
+from mediaclass.texttype import Text
+from mediaclass.media import Media
 
 # Set Logger
 log = logging.getLogger('BADMedia')
@@ -83,16 +84,16 @@ class BADMedia:
             text: a text article feed\n\
             back: back to menu.\n'))
             if answer == 'audio':
-                media = audiotype.Audio(dir=self.appdir)
+                media = Audio(dir=self.appdir)
                 self.audios.append(media)
             elif answer == 'youtube':
-                media = youtubetype.YouTube(dir=self.appdir)
+                media = YouTube(dir=self.appdir)
                 self.youtubes.append(media)
             elif answer == 'image':
-                media = imagetype.Image(dir=self.appdir)
+                media = Image(dir=self.appdir)
                 self.images.append(media)
             elif answer == 'text':
-                media = texttype.Text(dir=self.appdir)
+                media = Text(dir=self.appdir)
                 self.texts.append(media)
             elif answer == 'back':
                 self.menu()
@@ -116,4 +117,3 @@ if __name__ == '__main__':
 
     except Exception:
         log.exception('Error in main process')
-    return

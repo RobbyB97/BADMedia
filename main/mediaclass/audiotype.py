@@ -14,43 +14,25 @@ import logging
 import requests
 
 # Internal Libraries
-import media
+from mediaclass.media import Media
 
 # Set Logger
 log = logging.getLogger('BADMedia')
 
 
 
-class Audio:
+class Audio(Media):
 
 
     def __init__(self, dir, filename = None):
         log.info('New Audio class initializing...')
-
-        # Set base project directories
-        self.appdir = dir
-        self.jsondir = '%s/json/' % dir
-        self.webdir = '%s/../docs/' % dir
-
-        if filename:    # If reference to json file exists
-            try:
-                self.jsonobject = json.loads('%s%s.json' % (self.jsondir, filename))
-            except Exception:
-                log.exception('Error loading %s.json. Creating new media source...')
-                self.getInfo()
-            self.name = self.jsonobject['name']
-            self.link = self.jsonobject['xml']
-            self.media = self.jsonobject['media']
-            self.tag = self.jsonobject['tag']
-
-        else:       # If this is a new media object
-            self.getInfo()
+        Media.__init__(self, dir, filename = None)
         return
 
 
-    def getInfo(self):
-        log.info('%s.getInfo started...' % self.name)
-
+    """def getInfo(self):
+        log.info('Audio.getInfo started...')
+        print('AUDIO GETINFO')
         # Get object information from user
         self.type = 'audio'
         self.name = str(input('What should this media be called?\n'))
@@ -60,7 +42,7 @@ class Audio:
             self.tag = 'enclosure'
 
         self.saveToJSON()
-        return
+        return"""
 
 
     def getMedia(self):
