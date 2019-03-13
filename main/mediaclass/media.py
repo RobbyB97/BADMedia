@@ -46,7 +46,7 @@ class Media:
         except Exception:
             log.exception('Could not find %s outerwrap template...' % str(self.type))
 
-        # Load JSON object if filename argument passed
+        # Load JSON object (if filename argument passed)
         if filename:
             try:
                 os.chdir(self.jsondir)
@@ -55,12 +55,14 @@ class Media:
             except:
                 log.warning('Error loading %s.json. Creating new media source...' % filename)
                 self.getInfo()
+
+            # Assign class attributes from JSON object
             self.name = self.jsonobject['name']
             self.link = self.jsonobject['xml']
             self.media = self.jsonobject['media']
             self.tag = self.jsonobject['tag']
 
-        # Get information to create media object if filename argument not passed
+        # Get information to create media object (if filename argument not passed)
         if not filename:
             self.getInfo()
 
