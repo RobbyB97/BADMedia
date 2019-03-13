@@ -129,6 +129,7 @@ class BADMedia:
             else:
                 print('Input invalid!')
                 self.addMedia()
+        return
 
 
     def menu(self):
@@ -155,6 +156,7 @@ class BADMedia:
         #TODO: Add create option
         else:
             print('Input invalid!')
+            self.menu()
         return
 
 
