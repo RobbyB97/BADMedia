@@ -19,6 +19,7 @@ class Writer:
 
 
     def __init__(self, dir):
+        log.debug('Initializing Writer class...')
         
         # Load base project directories
         self.appdir = dir
@@ -28,6 +29,7 @@ class Writer:
 
 
     def loadMedia(self, audio = None, youtube = None, text = None, image = None):
+        log.debug('Writer.loadMedia started...')
 
     	# Set lists of media objects
     	self.audio = audio
@@ -35,3 +37,18 @@ class Writer:
     	self.text = text
     	self.image = image
     	return
+
+
+    def updateMedia(self):
+        log.debug('Writer.updateMedia started...')
+
+        # Iterate through media lists and update JSON objects
+        for item in self.audio:
+            item.updateJSON()
+        for item in self.youtube:
+            item.updateJSON()
+        for item in self.text:
+            item.updateJSON()
+        for item in self.image:
+            item.updateJSON()
+        return
