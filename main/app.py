@@ -88,6 +88,20 @@ class BADMedia:
         return
 
 
+    def listMedia(self):
+        log.debug('BADMedia.listMedia started...')
+
+        for item in self.audios:
+            print('%s\n' % item.name)
+        for item in self.texts:
+            print('%s\n' % item.name)
+        for item in self.youtubes:
+            print('%s\n' % item.name)
+        for item in self.images:
+            print('%s\n' % item.name)
+        return
+
+
     def addMedia(self):
         log.debug('BADMedia.addMedia started...')
 
