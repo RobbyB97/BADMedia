@@ -56,3 +56,9 @@ class Writer:
         for item in self.image:
             item.updateJSON()
         return
+
+
+    def writeSection(self):
+        log.debug('Writer.writeSection started...')
+        #TODO
+        return
