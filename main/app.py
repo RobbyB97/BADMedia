@@ -88,24 +88,30 @@ class BADMedia:
         return
 
 
-    def menu(self):
-        log.debug('menu started:')
-        os.chdir(self.appdir)
+    def clearAll(self):
+        log.debug('Clearing all JSON objects...')
 
-        inp = str(input('What would you like to do?\n\
-        add: add new media source\n\
-        clear: remove a media source\n\
-        clearall: clear all media sources\n\
-        create: generate webpage\n\
-        exit: exit.\n'))
+            for item in self.audios:
+                item.clearJSON()
+            for item in self.images:
+                item.clearJSON()
+            for item in self.youtubes:
+                item.clearJSON()
+            for item in self.texts:
+                item.clearJSON()
+        return
 
-        if inp == 'add':
-            answer = str(input('What type of media?\n\
+
+    def addMedia(self):
+        log.debug('Adding new media source...')
+
+        answer = str(input('What type of media?\n\
             audio: an podcast or other audio stream\n\
             youtube: a youtube channel\n\
             image: an image feed\n\
             text: a text article feed\n\
             back: back to menu.\n'))
+
             if answer == 'audio':
                 media = Audio(dir=self.appdir)
                 self.audios.append(media)
@@ -122,6 +128,25 @@ class BADMedia:
                 self.menu()
             else:
                 print('Input invalid!')
+                self.addMedia()
+
+
+    def menu(self):
+        log.debug('menu started:')
+        os.chdir(self.appdir)
+
+        inp = str(input('What would you like to do?\n\
+        add: add new media source\n\
+        clear: remove a media source\n\
+        clearall: clear all media sources\n\
+        create: generate webpage\n\
+        exit: exit.\n'))
+
+        if inp == 'add':
+            self.addMedia()
+
+        elif input == 'clearall':
+            self.clearAll()
 
         elif inp == 'test':     # Placeholder for testing features
             self.load()
