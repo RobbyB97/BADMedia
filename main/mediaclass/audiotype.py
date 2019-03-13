@@ -27,7 +27,10 @@ class Audio(Media):
     def __init__(self, dir, filename = None):
         log.info('New Audio class initializing...')
 
-        Media.__init__(self, dir, filename = None)
+        if filename:
+            Media.__init__(self, dir=dir, filename=filename)
+        else:
+            Media.__init__(self, dir=dir)
         return
 
 

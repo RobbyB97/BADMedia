@@ -31,8 +31,11 @@ class Media:
         self.webdir = '%s/../docs/' % dir
 
         if filename:    # If reference to json file exists
+            print('FILENAME %s' % filename)
             try:
-                self.jsonobject = json.loads('%s%s.json' % (self.jsondir, filename))
+                os.chdir(self.jsondir)
+                with open(filename, 'r') as f:
+                    self.jsonobject = json.loads(f.read())
             except Exception:
                 log.exception('Error loading %s.json. Creating new media source...')
                 self.getInfo()
@@ -41,7 +44,8 @@ class Media:
             self.media = self.jsonobject['media']
             self.tag = self.jsonobject['tag']
 
-        else:       # If this is a new media object
+        if not filename:       # If this is a new media object
+            print('NO FILENAME')
             self.getInfo()
 
         return
