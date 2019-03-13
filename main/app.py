@@ -115,15 +115,19 @@ class BADMedia:
         if answer == 'audio':
             media = Audio(dir=self.appdir)
             self.audios.append(media)
+            self.htmler.updateMedia()
         elif answer == 'youtube':
             media = YouTube(dir=self.appdir)
             self.youtubes.append(media)
+            self.htmler.updateMedia()
         elif answer == 'image':
             media = Image(dir=self.appdir)
             self.images.append(media)
+            self.htmler.updateMedia()
         elif answer == 'text':
             media = Text(dir=self.appdir)
             self.texts.append(media)
+            self.htmler.updateMedia()
         elif answer == 'back':
             self.menu()
         else:
