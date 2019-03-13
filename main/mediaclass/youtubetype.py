@@ -23,7 +23,6 @@ class Youtube(Media):
 
 
     def __init__(self, dir, filename = None):
-        log.info('New Youtube class initializing...')
 
         # Set media type and pass to Media class
         self.type = 'youtube'

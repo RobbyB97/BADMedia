@@ -23,7 +23,6 @@ class Image(Media):
 
 
     def __init__(self, dir, filename = None):
-        log.info('New Image class initializing...')
 
         # Set media type and pass to Media class
         self.type = 'image'

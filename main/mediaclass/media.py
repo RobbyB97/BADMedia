@@ -23,7 +23,7 @@ class Media:
 
 
     def __init__(self, dir, filename = None):
-        log.info('New Media class initializing...')
+        log.debug('New %s class initializing...' % self.type)
 
         # Set base project directories
         self.appdir = dir
@@ -70,7 +70,7 @@ class Media:
 
 
     def getInfo(self):
-        log.info('Media.getInfo started')
+        log.debug('Media.getInfo started')
 
         # Get media information from user
         self.name = str(input('What should this media be called?\n'))
@@ -82,7 +82,7 @@ class Media:
 
 
     def getMedia(self):
-        log.info('%s.getMedia started...' % self.name)
+        log.debug('%s.getMedia started...' % self.name)
 
         self.media = {}     # Reset list of audio links
 
@@ -103,7 +103,7 @@ class Media:
 
 
     def updateJSON(self):
-        log.info('%s.updateJSON started...' % self.name)
+        log.debug('%s.updateJSON started...' % self.name)
 
         self.getMedia()     # Refresh post entries
 
@@ -125,7 +125,7 @@ class Media:
 
 
     def clearJSON(self):
-        log.info('%s.clearJSON started...' % self.name)
+        log.debug('%s.clearJSON started...' % self.name)
 
         # Remove class instances' JSON file if it exists
         os.chdir(self.jsondir)

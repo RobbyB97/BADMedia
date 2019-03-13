@@ -23,7 +23,6 @@ class Text(Media):
 
 
     def __init__(self, dir, filename = None):
-        log.info('New Text class initializing...')
 
         # Set media type and pass to Media class
         self.type = 'text'
