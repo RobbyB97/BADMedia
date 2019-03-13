@@ -88,22 +88,8 @@ class BADMedia:
         return
 
 
-    def clearAll(self):
-        log.debug('Clearing all JSON objects...')
-
-            for item in self.audios:
-                item.clearJSON()
-            for item in self.images:
-                item.clearJSON()
-            for item in self.youtubes:
-                item.clearJSON()
-            for item in self.texts:
-                item.clearJSON()
-        return
-
-
     def addMedia(self):
-        log.debug('Adding new media source...')
+        log.debug('BADMedia.addMedia started...')
 
         answer = str(input('What type of media?\n\
             audio: an podcast or other audio stream\n\
@@ -132,8 +118,34 @@ class BADMedia:
         return
 
 
+    def clear(self, name):
+        log.debug('BADMedia.clear started...')
+        #TODO
+        return
+
+
+    def clearAll(self):
+        log.debug('BADMedia.clearAll started...')
+
+            for item in self.audios:
+                item.clearJSON()
+            for item in self.images:
+                item.clearJSON()
+            for item in self.youtubes:
+                item.clearJSON()
+            for item in self.texts:
+                item.clearJSON()
+        return
+
+
+    def generatePage(self)
+        log.debug('BADMedia.generatePage started...')
+        #TODO
+        return
+
+
     def menu(self):
-        log.debug('menu started:')
+        log.debug('BADMedia.menu started:')
         os.chdir(self.appdir)
 
         inp = str(input('What would you like to do?\n\
@@ -146,14 +158,18 @@ class BADMedia:
         if inp == 'add':
             self.addMedia()
 
-        elif input == 'clearall':
+        elif inp == 'clear':
+            self.clear()
+
+        elif inp == 'clearall':
             self.clearAll()
+
+        elif inp == 'create':
+            self.generatePage()
 
         elif inp == 'test':     # Placeholder for testing features
             self.load()
-        #TODO: Add clear option
-        #TODO: Add clearall option
-        #TODO: Add create option
+
         else:
             print('Input invalid!')
             self.menu()
