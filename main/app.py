@@ -98,23 +98,23 @@ class BADMedia:
             text: a text article feed\n\
             back: back to menu.\n'))
 
-            if answer == 'audio':
-                media = Audio(dir=self.appdir)
-                self.audios.append(media)
-            elif answer == 'youtube':
-                media = YouTube(dir=self.appdir)
-                self.youtubes.append(media)
-            elif answer == 'image':
-                media = Image(dir=self.appdir)
-                self.images.append(media)
-            elif answer == 'text':
-                media = Text(dir=self.appdir)
-                self.texts.append(media)
-            elif answer == 'back':
-                self.menu()
-            else:
-                print('Input invalid!')
-                self.addMedia()
+        if answer == 'audio':
+            media = Audio(dir=self.appdir)
+            self.audios.append(media)
+        elif answer == 'youtube':
+            media = YouTube(dir=self.appdir)
+            self.youtubes.append(media)
+        elif answer == 'image':
+            media = Image(dir=self.appdir)
+            self.images.append(media)
+        elif answer == 'text':
+            media = Text(dir=self.appdir)
+            self.texts.append(media)
+        elif answer == 'back':
+            self.menu()
+        else:
+            print('Input invalid!')
+            self.addMedia()
         return
 
 
@@ -127,18 +127,18 @@ class BADMedia:
     def clearAll(self):
         log.debug('BADMedia.clearAll started...')
 
-            for item in self.audios:
-                item.clearJSON()
-            for item in self.images:
-                item.clearJSON()
-            for item in self.youtubes:
-                item.clearJSON()
-            for item in self.texts:
-                item.clearJSON()
+        for item in self.audios:
+            item.clearJSON()
+        for item in self.images:
+            item.clearJSON()
+        for item in self.youtubes:
+            item.clearJSON()
+        for item in self.texts:
+            item.clearJSON()
         return
 
 
-    def generatePage(self)
+    def generatePage(self):
         log.debug('BADMedia.generatePage started...')
         #TODO
         return
@@ -148,6 +148,7 @@ class BADMedia:
         log.debug('BADMedia.menu started:')
         os.chdir(self.appdir)
 
+        inp = ''
         inp = str(input('What would you like to do?\n\
         add: add new media source\n\
         clear: remove a media source\n\
