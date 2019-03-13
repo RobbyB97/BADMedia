@@ -28,15 +28,19 @@ class Writer:
         return
 
 
-    def loadMedia(self, audio = None, youtube = None, text = None, image = None):
+    def loadMedia(self, audios = None, youtubes = None, texts = None, images = None):
         log.debug('Writer.loadMedia started...')
 
     	# Set lists of media objects
-    	self.audio = audio
-    	self.youtube = youtube
-    	self.text = text
-    	self.image = image
-    	return
+        if audios:
+    	    self.audio = audios
+        if youtubes:
+            self.youtube = youtubes
+        if texts:
+    	    self.text = texts
+        if images:
+    	    self.image = images
+        return
 
 
     def updateMedia(self):
