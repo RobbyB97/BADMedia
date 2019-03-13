@@ -31,7 +31,6 @@ class Media:
         self.webdir = '%s/../docs/' % dir
 
         if filename:    # If reference to json file exists
-            print('FILENAME %s' % filename)
             try:
                 os.chdir(self.jsondir)
                 with open(filename, 'r') as f:
