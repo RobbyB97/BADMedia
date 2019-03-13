@@ -105,6 +105,7 @@ class BADMedia:
     def addMedia(self):
         log.debug('BADMedia.addMedia started...')
 
+        # Menu
         answer = str(input('What type of media?\n\
             audio: an podcast or other audio stream\n\
             youtube: a youtube channel\n\
@@ -112,24 +113,30 @@ class BADMedia:
             text: a text article feed\n\
             back: back to menu.\n'))
 
+        # Menu Options
         if answer == 'audio':
             media = Audio(dir=self.appdir)
             self.audios.append(media)
             self.htmler.updateMedia()
+
         elif answer == 'youtube':
             media = YouTube(dir=self.appdir)
             self.youtubes.append(media)
             self.htmler.updateMedia()
+
         elif answer == 'image':
             media = Image(dir=self.appdir)
             self.images.append(media)
             self.htmler.updateMedia()
+
         elif answer == 'text':
             media = Text(dir=self.appdir)
             self.texts.append(media)
             self.htmler.updateMedia()
+
         elif answer == 'back':
             self.menu()
+            
         else:
             print('Input invalid!')
             self.addMedia()
