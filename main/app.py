@@ -132,9 +132,37 @@ class BADMedia:
         return
 
 
-    def clear(self, name):
+    def clear(self, name=None):
         log.debug('BADMedia.clear started...')
-        #TODO
+        
+        if not name:    # Get name of object if none was given
+            name = str(input('Enter the name of the media:'))
+
+        found = False   # Flag
+
+        # Loop through media list until match is found
+        while not found:
+            for item in self.audios:
+                if item.name == name:
+                    item.clearJSON()
+                    found = True
+            for item in self.youtubes:
+                if item.name == name:
+                    item.clearJSON()
+                    found = True
+            for item in self.images:
+                if item.name == name:
+                    item.clearJSON()
+                    found = True
+            for item in self.texts:
+                if item.name == name:
+                    item.clearJSON()
+                    found = True
+            break
+
+        if not found:
+            log.warning('%s does not match any media object...' % name)
+            self.menu()
         return
 
 
