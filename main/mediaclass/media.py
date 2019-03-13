@@ -30,20 +30,38 @@ class Media:
         self.jsondir = '%s/json/' % dir
         self.webdir = '%s/../docs/' % dir
 
-        if filename:    # If reference to json file exists
+        # Get HTML innerwrap
+        try:
+            os.chdir(self.webdir)
+            with open('./assets/templates/%s/post.html' % str(self.type), 'r') as f:
+                self.innerwrap = f.read.split('|')
+        except Exception:
+            log.exception('Could not find %s innerwrap template...' % str(self.type))
+
+        # Get HTML outerwrap
+        try:
+            os.chdir(self.webdir)
+            with open('./assets/templates/%s/wrap.html' % str(self.type), 'r') as f:
+                self.outerwrap = f.read.split('|')
+        except Exception:
+            log.exception('Could not find %s outerwrap template...' % str(self.type))
+
+        # Load JSON object if filename argument passed
+        if filename:
             try:
                 os.chdir(self.jsondir)
                 with open(filename, 'r') as f:
                     self.jsonobject = json.loads(f.read())
-            except Exception:
-                log.exception('Error loading %s.json. Creating new media source...')
+            except:
+                log.warning('Error loading %s.json. Creating new media source...' % filename)
                 self.getInfo()
             self.name = self.jsonobject['name']
             self.link = self.jsonobject['xml']
             self.media = self.jsonobject['media']
             self.tag = self.jsonobject['tag']
 
-        if not filename:       # If this is a new media object
+        # Get information to create media object if filename argument not passed
+        if not filename:
             self.getInfo()
 
         return

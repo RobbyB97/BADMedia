@@ -33,15 +33,3 @@ class Youtube(Media):
         else:
             Media.__init__(self, dir=dir)
         return
-
-
-    def getHTML(self):
-        log.info('Youtube.getHTML started...')
-
-        # Parse HTML post template
-        try:
-            os.chdir(self.webdir)
-            with open('./assets/templates/youtube/post.html', 'r') as f:
-                self.wrap = f.read.split('|')
-        except Exception:
-            log.exception('Could not find youtube post template...')

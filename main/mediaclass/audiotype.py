@@ -35,15 +35,3 @@ class Audio(Media):
         else:
             Media.__init__(self, dir=dir)
         return
-
-
-    def getHTML(self):
-        log.info('Audio.getHTML started...')
-
-        # Parse HTML post template
-        try:
-            os.chdir(self.webdir)
-            with open('./assets/templates/audio/post.html', 'r') as f:
-                self.wrap = f.read.split('|')
-        except Exception:
-            log.exception('Could not find audio post template...')
