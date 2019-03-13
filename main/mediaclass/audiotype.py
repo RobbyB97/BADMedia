@@ -27,19 +27,13 @@ class Audio(Media):
     def __init__(self, dir, filename = None):
         log.info('New Audio class initializing...')
 
+        # Set media type and pass to Media class
+        self.type = 'audio'
+
         if filename:
             Media.__init__(self, dir=dir, filename=filename)
         else:
             Media.__init__(self, dir=dir)
-        return
-
-
-    def getInfo(self):
-        log.info('Audio.getInfo started...')
-
-        # Set media type and pass to Media class
-        self.type = 'audio'
-        Media.getInfo(self)
         return
 
 

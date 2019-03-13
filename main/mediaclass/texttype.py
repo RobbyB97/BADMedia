@@ -25,16 +25,13 @@ class Text(Media):
     def __init__(self, dir, filename = None):
         log.info('New Text class initializing...')
 
-        Media.__init__(self, dir, filename = None)
-        return
-
-
-    def getInfo(self):
-        log.info('Text.getInfo started...')
-
         # Set media type and pass to Media class
         self.type = 'text'
-        Media.getInfo(self)
+
+        if filename:
+            Media.__init__(self, dir=dir, filename=filename)
+        else:
+            Media.__init__(self, dir=dir)
         return
 
 

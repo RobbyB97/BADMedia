@@ -25,16 +25,13 @@ class Youtube(Media):
     def __init__(self, dir, filename = None):
         log.info('New Youtube class initializing...')
 
-        Media.__init__(self, dir, filename = None)
-        return
-
-
-    def getInfo(self):
-        log.info('Youtube.getInfo started...')
-
         # Set media type and pass to Media class
         self.type = 'youtube'
-        Media.getInfo(self)
+
+        if filename:
+            Media.__init__(self, dir=dir, filename=filename)
+        else:
+            Media.__init__(self, dir=dir)
         return
 
 

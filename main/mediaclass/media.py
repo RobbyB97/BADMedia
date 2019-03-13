@@ -44,7 +44,6 @@ class Media:
             self.tag = self.jsonobject['tag']
 
         if not filename:       # If this is a new media object
-            print('NO FILENAME')
             self.getInfo()
 
         return
