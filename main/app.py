@@ -149,18 +149,22 @@ class BADMedia:
             for item in self.audios:
                 if item.name == name:
                     item.clearJSON()
+                    self.writer.updateMedia()
                     found = True
             for item in self.youtubes:
                 if item.name == name:
                     item.clearJSON()
+                    self.writer.updateMedia()
                     found = True
             for item in self.images:
                 if item.name == name:
                     item.clearJSON()
+                    self.writer.updateMedia()
                     found = True
             for item in self.texts:
                 if item.name == name:
                     item.clearJSON()
+                    self.writer.updateMedia()
                     found = True
             break
 
@@ -173,6 +177,7 @@ class BADMedia:
     def clearAll(self):
         log.debug('BADMedia.clearAll started...')
 
+        # Clear JSON files
         for item in self.audios:
             item.clearJSON()
         for item in self.images:
