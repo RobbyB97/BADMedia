@@ -27,7 +27,12 @@ class Writer:
         self.jsondir = '%s/json/' % dir
         self.webdir = '%s/../docs/' % dir
 
-        self.templates = {}     # Dictionary containing HTML templates
+        # Initialize template dictionaries
+        self.master = {}        # HTML Header / Footer / Navbar
+        self.audio = {}
+        self.image = {}
+        self.text = {}
+        self.youtube = {}
 
         # Methods to run on init
         self.loadMedia()
@@ -39,32 +44,51 @@ class Writer:
         log.debug('Writer.loadMedia started...')
 
     	# Set lists of media objects
-        if audios:
-    	    self.audio = audios
-        if youtubes:
-            self.youtube = youtubes
-        if texts:
-    	    self.text = texts
-        if images:
-    	    self.image = images
+    	self.audiolist = audios
+        self.youtubelist = youtubes
+        self.textlist = texts
+        self.imagelist = images
         return
 
 
     def getTemplates(self):
         log.debug('Writer.getWraps started...')
 
-        # Wrapper dictionary and keys
-        self.mediawraps = {}
-        types = ['audio', 'text', 'image', 'youtube']
+        try:        # Get audio templates
+            os.chdir(self.webdir)
+            with open('./assets/templates/audio/wrap.html', 'r') as f:
+                self.audio['outer'] = f.read().split('|')
+            with open('./assets/templates/audio/post.html', 'r') as f:
+                self.audio['inner'] = f.read().split('|')
+        except:
+            log.exception('Could not find audio template...')
 
-        # Get wrap for each media type and add to dictionary
-        for type in types:
-            try:        # Open type wrap template, if it exists
-                os.chdir(self.webdir)
-                with open('./assets/templates/%s/wrap.html' % type, 'r') as f:
-                    self.mediawraps[type] = f.read().split('|')
-            except:
-                log.exception('Could not find %s wrap template...' % type)
+        try:        # Get image templates
+            os.chdir(self.webdir)
+            with open('./assets/templates/image/wrap.html', 'r') as f:
+                self.image['outer'] = f.read().split('|')
+            with open('./assets/templates/image/post.html', 'r') as f:
+                self.image['inner'] = f.read().split('|')
+        except:
+            log.exception('Could not find image template...')
+
+        try:        # Get youtube templates
+            os.chdir(self.webdir)
+            with open('./assets/templates/youtube/wrap.html', 'r') as f:
+                self.youtube['outer'] = f.read().split('|')
+            with open('./assets/templates/youtube/post.html', 'r') as f:
+                self.youtube['inner'] = f.read().split('|')
+        except:
+            log.exception('Could not find youtube template...')
+
+        try:        # Get text templates
+            os.chdir(self.webdir)
+            with open('./assets/templates/text/wrap.html', 'r') as f:
+                self.text['outer'] = f.read().split('|')
+            with open('./assets/templates/text/post.html', 'r') as f:
+                self.text['inner'] = f.read().split('|')
+        except:
+            log.exception('Could not find text template...')
         return
 
 
