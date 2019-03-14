@@ -27,9 +27,11 @@ class Writer:
         self.jsondir = '%s/json/' % dir
         self.webdir = '%s/../docs/' % dir
 
+        self.templates = {}     # Dictionary containing HTML templates
+
         # Methods to run on init
         self.loadMedia()
-        self.getWraps()
+        self.getTemplates()
         return
 
 
@@ -48,7 +50,7 @@ class Writer:
         return
 
 
-    def getWraps(self):
+    def getTemplates(self):
         log.debug('Writer.getWraps started...')
 
         # Wrapper dictionary and keys
