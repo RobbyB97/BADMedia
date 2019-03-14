@@ -38,14 +38,6 @@ class Media:
         except Exception:
             log.exception('Could not find %s innerwrap template...' % str(self.type))
 
-        # Get HTML outerwrap
-        try:
-            os.chdir(self.webdir)
-            with open('./assets/templates/%s/wrap.html' % str(self.type), 'r') as f:
-                self.outerwrap = f.read().split('|')
-        except Exception:
-            log.exception('Could not find %s outerwrap template...' % str(self.type))
-
         # Load JSON object (if filename argument passed)
         if filename:
             try:
