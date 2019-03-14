@@ -54,6 +54,17 @@ class Writer:
     def getTemplates(self):
         log.debug('Writer.getWraps started...')
 
+        try:        # Get master templates
+            os.chdir(self.webdir)
+            with open('./assets/templates/header.html', 'r') as f:
+                self.master['header'] = f.read().split('|')
+            with open('./assets/templates/topbar.html', 'r') as f:
+                self.master['topbar'] = f.read().split('|')
+            with open('./assets/templates/pages.html', 'r') as f:
+                self.master['pages'] = f.read().split('|')
+        except:
+            log.exception('Could not find master template...')
+
         try:        # Get audio templates
             os.chdir(self.webdir)
             with open('./assets/templates/audio/wrap.html', 'r') as f:
