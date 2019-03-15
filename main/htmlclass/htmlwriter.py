@@ -140,7 +140,29 @@ class Writer:
         return
 
 
-    def writeSection(self):
-        log.debug('Writer.writeSection started...')
+    def compileAudio(self):
+        log.debug('Writer.compileAudio started...')
+        #TODO
+        return
+
+
+    def compileImage(self):
+        log.debug('Writer.compileImage started...')
+        #TODO
+        return
+
+
+    def compileYoutube(self):
+        log.debug('Writer.compileYoutube started...')
+        #TODO
+        return
+
+    def compileText(self):
+        log.debug('Writer.compileText started...')
+        #TODO
+        return
+
+    def compileWebpage(self):
+        log.debug('Writer.compileWebpage started...')
         #TODO
         return
