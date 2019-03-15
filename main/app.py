@@ -136,7 +136,7 @@ class BADMedia:
 
         elif answer == 'back':
             self.menu()
-            
+
         else:
             print('Input invalid!')
             self.addMedia()
@@ -145,7 +145,7 @@ class BADMedia:
 
     def clear(self, name=None):
         log.debug('BADMedia.clear started...')
-        
+
         if not name:    # Get name of object if none was given
             name = str(input('Enter the name of the media:'))
 
@@ -225,6 +225,9 @@ class BADMedia:
 
         elif inp == 'create':
             self.generatePage()
+
+        elif inp == 'exit':
+            return
 
         elif inp == 'test':     # Placeholder for testing features
             self.load()
