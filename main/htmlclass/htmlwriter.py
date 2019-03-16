@@ -142,27 +142,44 @@ class Writer:
 
     def compileAudio(self):
         log.debug('Writer.compileAudio started...')
+
+        sectionhtml = []        # List of HTML lines to be returned
         #TODO
-        return
+        return sectionhtml
 
 
     def compileImage(self):
         log.debug('Writer.compileImage started...')
+
+        sectionhtml = []        # List of HTML lines to be returned
         #TODO
-        return
+        return sectionhtml
 
 
     def compileYoutube(self):
         log.debug('Writer.compileYoutube started...')
+
+        sectionhtml = []        # List of HTML lines to be returned
         #TODO
-        return
+        return sectionhtml
 
     def compileText(self):
         log.debug('Writer.compileText started...')
+
+        sectionhtml = []        # List of HTML lines to be returned
         #TODO
-        return
+        return sectionhtml
+
 
     def compileWebpage(self):
         log.debug('Writer.compileWebpage started...')
+
+        os.chdir(webdir)
+
+        # Compile media sections
+        audiosection = self.compileAudio()
+        imagesection = self.compileImage()
+        youtubesection = self.compileYoutube()
+        textsection = self.compileText()
         #TODO
         return
