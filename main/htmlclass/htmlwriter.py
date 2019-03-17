@@ -161,7 +161,7 @@ class Writer:
 
         self.youtubesection = []        # Declare/ Clear Youtube HTML
         #TODO
-        return sectionhtml
+        return
 
     def compileText(self):
         log.debug('Writer.compileText started...')
@@ -174,7 +174,7 @@ class Writer:
     def compileWebpage(self):
         log.debug('Writer.compileWebpage started...')
 
-        os.chdir(webdir)
+        os.chdir(self.webdir)
 
         # Compile media sections
         self.compileAudio()
@@ -183,7 +183,9 @@ class Writer:
         self.compileText()
 
         with open('index.html', 'w') as f:
-            f.write(str(self.master['header'][0]))
+            f.write(self.master['header'][0])       # HTML head/meta
+            f.write(self.master['topbar'][0])        # Navbar
+            f.write(self.master['header'][1])       # HTML foot
 
         #TODO
         return
