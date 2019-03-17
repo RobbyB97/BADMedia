@@ -163,6 +163,7 @@ class Writer:
         #TODO
         return
 
+
     def compileText(self):
         log.debug('Writer.compileText started...')
 
