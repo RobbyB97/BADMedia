@@ -182,6 +182,8 @@ class Writer:
         self.compileYoutube()
         self.compileText()
 
+        with open('index.html', 'w') as f:
+            f.write(str(self.master['header'][0]))
 
         #TODO
         return
