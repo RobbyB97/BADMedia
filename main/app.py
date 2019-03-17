@@ -198,7 +198,8 @@ class BADMedia:
 
     def generatePage(self):
         log.debug('BADMedia.generatePage started...')
-        #TODO
+
+        self.htmls.compileWebpage()
         return
 
 
