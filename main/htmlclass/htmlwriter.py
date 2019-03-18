@@ -19,7 +19,7 @@ log = logging.getLogger('BADMedia')
 class Writer:
 
 
-    def __init__(self, dir):
+    def __init__(self, dir, audios = None, youtubes = None, texts = None, images = None):
         log.debug('Initializing Writer class...')
 
         # Load base project directories
@@ -34,32 +34,30 @@ class Writer:
         self.text = {}
         self.youtube = {}
 
-        # Methods to run on init
-        self.loadMedia()
-        self.getTemplates()
-        return
-
-
-    def loadMedia(self, audios = None, youtubes = None, texts = None, images = None):
-        log.debug('Writer.loadMedia started...')
-
-    	# Set lists of media objects
+        # Set lists of media objects
         if audios:
+            log.info('Loading audio content...')
     	    self.audiolist = audios
         else:
             self.audiolist = []
         if youtubes:
+            log.info('Loading Youtube content...')
             self.youtubelist = youtubes
         else:
             self.youtubelist = []
         if texts:
+            log.info('Loading text content...')
             self.textlist = texts
         else:
             self.textlist = []
         if images:
+            log.info('Loading image content...')
             self.imagelist = images
         else:
             self.imagelist = []
+
+        # Methods to run on init
+        self.getTemplates()
         return
 
 
@@ -144,6 +142,7 @@ class Writer:
         log.debug('Writer.compileAudio started...')
 
         self.audiosection = []        # Declare/ Clear Audio HTML
+        print(self.audiolist)
         #TODO
         return
 
