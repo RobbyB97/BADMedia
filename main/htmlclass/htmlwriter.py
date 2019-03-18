@@ -142,9 +142,28 @@ class Writer:
         log.debug('Writer.compileAudio started...')
 
         self.audiosection = []        # Declare/ Clear Audio HTML
+
+        # Loop through Audio class instances
         for object in self.audiolist:
+            self.audiosection.append(self.audio['outer'][0])
+            print(self.audio['outer'][0])
+            self.audiosection.append(object.name)
+            print(object.name)
+            self.audiosection.append(self.audio['outer'][1])
+            print(self.audio['outer'][1])
+
+            # Loop through list of media links in each Audio class
             for media in object.media:
+                self.audiosection.append(self.audio['inner'][0])
+                print(self.audio['inner'][0])
+                # TODO: Name of mp3 file
+                self.audiosection.append(self.audio['inner'][1])
+                print(self.audio['inner'][1])
+                self.audiosection.append(object.media[media])
                 print(object.media[media])
+                self.audiosection.append(self.audio['inner'][2])
+                print(self.audio['inner'][2])
+
         #TODO
         return
 
