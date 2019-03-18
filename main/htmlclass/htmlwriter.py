@@ -19,7 +19,7 @@ log = logging.getLogger('BADMedia')
 class Writer:
 
 
-    def __init__(self, dir, audios = None, youtubes = None, texts = None, images = None):
+    def __init__(self, dir):
         log.debug('Initializing Writer class...')
 
         # Load base project directories
@@ -33,6 +33,13 @@ class Writer:
         self.image = {}
         self.text = {}
         self.youtube = {}
+
+        # Methods to run on init
+        self.getTemplates()
+        return
+
+    def loadMedia(self, audios=None, youtubes=None, texts=None, images=None):
+        log.debug('Writer.loadMedia started...')
 
         # Set lists of media objects
         if audios:
@@ -51,9 +58,6 @@ class Writer:
             self.imagelist = images
         else:
             self.imagelist = []
-
-        # Methods to run on init
-        self.getTemplates()
         return
 
 
