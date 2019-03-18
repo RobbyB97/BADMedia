@@ -36,22 +36,18 @@ class Writer:
 
         # Set lists of media objects
         if audios:
-            log.info('Loading audio content...')
     	    self.audiolist = audios
         else:
             self.audiolist = []
         if youtubes:
-            log.info('Loading Youtube content...')
             self.youtubelist = youtubes
         else:
             self.youtubelist = []
         if texts:
-            log.info('Loading text content...')
             self.textlist = texts
         else:
             self.textlist = []
         if images:
-            log.info('Loading image content...')
             self.imagelist = images
         else:
             self.imagelist = []
@@ -142,7 +138,9 @@ class Writer:
         log.debug('Writer.compileAudio started...')
 
         self.audiosection = []        # Declare/ Clear Audio HTML
-        print(self.audiolist)
+        for object in self.audiolist:
+            for media in object.media:
+                print(object.media[media])
         #TODO
         return
 
