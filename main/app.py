@@ -50,18 +50,17 @@ class BADMedia:
         self.jsondir = '%s/json/' % self.appdir
         self.webdir = '%s/../docs/' % self.appdir
 
-        # Create class lists / html writer class instance
+        # Create Writer class/ Media class lists and populate them
         self.htmls = Writer(dir=self.appdir)
         self.audios = []
         self.youtubes = []
         self.images = []
         self.texts = []
-
-        self.load()
+        self.loadMedia()
         return
 
 
-    def load(self):
+    def loadMedia(self):
         log.debug('Loading BADMedia...')
         os.chdir(self.jsondir)
 
@@ -85,6 +84,9 @@ class BADMedia:
                 self.youtubes.append(media)
             else:
                 log.warning('%s is not properly formatted' % str(file))
+
+        # Update Media class lists in Writer class
+        self.htmls.loadMedia(audios=self.audios, youtubes=self.youtubes, texts=self.texts, images=self.images)
         return
 
 
@@ -231,7 +233,7 @@ class BADMedia:
             return
 
         elif inp == 'test':     # Placeholder for testing features
-            self.load()
+            self.htmls.compileAudio()
 
         else:
             print('Input invalid!')
