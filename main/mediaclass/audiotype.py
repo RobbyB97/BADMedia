@@ -38,14 +38,25 @@ class Audio(Media):
         return
 
 
-    def getName2(self):
-        log.debug('Audio.getName2 started...')
+    def getMedia(self):
+        log.debug('%s.getMedia started...' % self.name)
+
+        self.media = {}     # Reset list of audio links
 
         # Get XML file
-        xml = requests.get(self.link).text
-        soup = bs(xml, 'lxml')
+        try:
+            xml = requests.get(self.link).text
+            soup = bs(xml, "lxml")
+        except Exception:
+            log.exception('Error loading XML from %s...' % self.link)
+            return
 
-        # Parse titles
-        for element in soup. findAll('title'):
-            print(element.text)
+        # Loop through each item, get contents
+        for element in soup.findAll('item'):
+            title = element.find('title').text
+            link = element.find(self.tag)['url']
+            self.media[title] = link
+
+        for element in self.media:
+            print('Title: \n %s \n\n Link: \n %s \n\n' % (element, self.media[element]))
         return
