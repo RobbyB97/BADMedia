@@ -39,7 +39,15 @@ class Audio(Media):
 
 
     def getMedia(self):
-        log.debug('%s.getMedia started...' % self.name)
+        log.debug('Audio.getMedia started...')
+
+        if 'libsyn' in self.link:
+            self.getMediaLibsyn(self)
+        else:
+            pass
+
+    def getMediaLibsyn(self):
+        log.debug('%s.getMediaLibsyn started...' % self.name)
 
         self.media = {}     # Reset list of audio links
 
