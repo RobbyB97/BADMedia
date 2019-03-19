@@ -42,6 +42,7 @@ class Audio(Media):
         log.debug('Audio.getMedia started...')
 
         if 'libsyn' in self.link:
+            log.info('Libsyn XML detected...')
             self.getMediaLibsyn(self)
         else:
             pass
