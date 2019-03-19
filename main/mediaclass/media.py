@@ -84,7 +84,7 @@ class Media:
         except Exception:
             log.exception('Error loading XML from %s...' % self.link)
 
-        # Parse and scrape audio file links
+        # Parse and scrape file links
         soup = bs(xml, "lxml")
         i=0 # Counter, serves as ID for each entry
         for element in soup.findAll(self.tag):
