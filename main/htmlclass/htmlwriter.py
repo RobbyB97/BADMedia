@@ -36,6 +36,7 @@ class Writer:
         self.getTemplates()
         return
 
+
     def loadMedia(self, audios=None, youtubes=None, texts=None, images=None):
         log.debug('Writer.loadMedia started...')
 
@@ -198,7 +199,6 @@ class Writer:
 
         for element in self.audiolist:
             log.info('Refreshing %s info...' % element.name)
-
 
         # Compile media sections
         self.compileAudio()
