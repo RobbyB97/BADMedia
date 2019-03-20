@@ -55,7 +55,6 @@ class Media:
         # Get information to create media object (if filename argument not passed)
         if not filename:
             self.getInfo()
-
         return
 
 
@@ -69,6 +68,7 @@ class Media:
         if not self.tag:
             self.tag = 'enclosure'
         self.updateJSON()
+        return
 
 
     def getMedia(self):
