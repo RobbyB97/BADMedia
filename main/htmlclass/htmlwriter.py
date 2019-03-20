@@ -24,9 +24,6 @@ class Writer:
 
         # Load base project directories
         self.dir = dir
-        self.appdir = dir
-        self.jsondir = '%s/json/' % dir
-        self.webdir = '%s/../docs/' % dir
 
         # Initialize template dictionaries
         self.master = {}        # HTML Header / Footer / Navbar
@@ -66,7 +63,7 @@ class Writer:
         log.debug('Writer.getWraps started...')
 
         try:        # Get master templates
-            os.chdir(self.webdir)
+            os.chdir(self.dir['web'])
             with open('./assets/templates/header.html', 'r') as f:
                 self.master['header'] = f.read().split('|')
                 self.master['header'].pop(0)
@@ -79,7 +76,7 @@ class Writer:
             log.exception('Could not find master template...')
 
         try:        # Get audio templates
-            os.chdir(self.webdir)
+            os.chdir(self.dir['web'])
             with open('./assets/templates/audio/wrap.html', 'r') as f:
                 self.audio['outer'] = f.read().split('|')
                 self.audio['outer'].pop(0)
@@ -90,7 +87,7 @@ class Writer:
             log.exception('Could not find audio template...')
 
         try:        # Get image templates
-            os.chdir(self.webdir)
+            os.chdir(self.dir['web'])
             with open('./assets/templates/image/wrap.html', 'r') as f:
                 self.image['outer'] = f.read().split('|')
                 self.image['outer'].pop(0)
@@ -101,7 +98,7 @@ class Writer:
             log.exception('Could not find image template...')
 
         try:        # Get youtube templates
-            os.chdir(self.webdir)
+            os.chdir(self.dir['web'])
             with open('./assets/templates/youtube/wrap.html', 'r') as f:
                 self.youtube['outer'] = f.read().split('|')
                 self.youtube['outer'].pop(0)
@@ -112,7 +109,7 @@ class Writer:
             log.exception('Could not find youtube template...')
 
         try:        # Get text templates
-            os.chdir(self.webdir)
+            os.chdir(self.dir['web'])
             with open('./assets/templates/text/wrap.html', 'r') as f:
                 self.text['outer'] = f.read().split('|')
                 self.text['outer'].pop(0)
@@ -197,7 +194,7 @@ class Writer:
     def compileWebpage(self):
         log.debug('Writer.compileWebpage started...')
 
-        os.chdir(self.webdir)
+        os.chdir(self.dir['web'])
 
         for element in self.audiolist:
             log.info('Refreshing %s info...' % element.name)

@@ -26,7 +26,7 @@ class Media:
         log.debug('New %s class initializing...' % self.type)
 
         # Set base project directories
-        self.dir = {}
+        self.dir = dir
 
         # Get HTML innerwrap
         try:
