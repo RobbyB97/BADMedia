@@ -52,7 +52,7 @@ class BADMedia:
         self.dir['web'] = '%s/../docs/' % self.dir['app']
 
         # Create Writer class/ Media class lists and populate them
-        self.htmls = Writer(dir=self.dir)
+        self.writer = Writer(dir=self.dir)
         self.audios = []
         self.youtubes = []
         self.images = []
@@ -88,7 +88,7 @@ class BADMedia:
                 log.warning('%s is not properly formatted' % str(file))
 
         # Update Media class lists in Writer class
-        self.htmls.loadMedia(audios=self.audios, youtubes=self.youtubes, texts=self.texts, images=self.images)
+        self.writer.loadMedia(audios=self.audios, youtubes=self.youtubes, texts=self.texts, images=self.images)
         return
 
 
@@ -121,22 +121,22 @@ class BADMedia:
         if answer == 'audio':
             media = Audio(dir=self.dir)
             self.audios.append(media)
-            self.htmler.updateMedia()
+            self.writer.updateMedia()
 
         elif answer == 'youtube':
             media = YouTube(dir=self.dir)
             self.youtubes.append(media)
-            self.htmler.updateMedia()
+            self.writer.updateMedia()
 
         elif answer == 'image':
             media = Image(dir=self.dir)
             self.images.append(media)
-            self.htmler.updateMedia()
+            self.writer.updateMedia()
 
         elif answer == 'text':
             media = Text(dir=self.dir)
             self.texts.append(media)
-            self.htmler.updateMedia()
+            self.writer.updateMedia()
 
         elif answer == 'back':
             self.menu()
@@ -207,7 +207,7 @@ class BADMedia:
     def generatePage(self):
         log.debug('BADMedia.generatePage started...')
 
-        self.htmls.compileWebpage()
+        self.writer.compileWebpage()
         return
 
 
