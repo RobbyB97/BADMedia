@@ -23,6 +23,7 @@ class Writer:
         log.debug('Initializing Writer class...')
 
         # Load base project directories
+        self.dir = dir
         self.appdir = dir
         self.jsondir = '%s/json/' % dir
         self.webdir = '%s/../docs/' % dir

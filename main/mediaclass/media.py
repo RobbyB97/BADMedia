@@ -26,13 +26,11 @@ class Media:
         log.debug('New %s class initializing...' % self.type)
 
         # Set base project directories
-        self.appdir = dir
-        self.jsondir = '%s/json/' % dir
-        self.webdir = '%s/../docs/' % dir
+        self.dir = {}
 
         # Get HTML innerwrap
         try:
-            os.chdir(self.webdir)
+            os.chdir(self.dir['web'])
             with open('./assets/templates/%s/post.html' % str(self.type), 'r') as f:
                 self.innerwrap = f.read().split('|')
         except Exception:
@@ -41,7 +39,7 @@ class Media:
         # Load JSON object (if filename argument passed)
         if filename:
             try:
-                os.chdir(self.jsondir)
+                os.chdir(self.dir['json'])
                 with open(filename, 'r') as f:
                     self.jsonobject = json.loads(f.read())
             except:
@@ -108,7 +106,7 @@ class Media:
         masterdict['media'] = self.media
 
         # Store in json file
-        os.chdir(self.jsondir)
+        os.chdir(self.dir['json'])
         jsonfile = open('%s.json' % self.name, 'w+')
         json_str = json.dumps(masterdict, sort_keys=True, indent=4)
         jsonfile.write(json_str)
@@ -120,7 +118,7 @@ class Media:
         log.debug('%s.clearJSON started...' % self.name)
 
         # Remove class instances' JSON file if it exists
-        os.chdir(self.jsondir)
+        os.chdir(self.dir['json'])
         try:
             os.remove('%s.json' % self.name)
         except:

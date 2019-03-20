@@ -46,12 +46,13 @@ class BADMedia:
         log.debug('New BADMedia class initializing...')
 
         # Base Directory
-        self.appdir = os.path.dirname(os.path.realpath(__file__))
-        self.jsondir = '%s/json/' % self.appdir
-        self.webdir = '%s/../docs/' % self.appdir
+        self.dir = {}
+        self.dir['app'] = os.path.dirname(os.path.realpath(__file__))
+        self.dir['json'] = '%s/json/' % self.dir['app']
+        self.dir['web'] = '%s/../docs/' % self.dir['app']
 
         # Create Writer class/ Media class lists and populate them
-        self.htmls = Writer(dir=self.appdir)
+        self.htmls = Writer(dir=self.dir)
         self.audios = []
         self.youtubes = []
         self.images = []
@@ -62,26 +63,26 @@ class BADMedia:
 
     def loadMedia(self):
         log.debug('Loading BADMedia...')
-        os.chdir(self.jsondir)
+        os.chdir(self.dir['json'])
 
-        # Load each JSON object from jsondir
-        for file in os.listdir(self.jsondir):
+        # Load each JSON object from dir['json']
+        for file in os.listdir(self.dir['json']):
             log.info('Loading %s...' % file)
             with open(file, 'r') as f:
                 jso = json.loads(f.read())
 
             # Create appropriate class instance
             if jso['type'] == 'audio':
-                media = Audio(dir=self.appdir, filename=file)
+                media = Audio(dir=self.dir, filename=file)
                 self.audios.append(media)
             elif jso['type'] == 'image':
-                media = Image(dir=self.appdir, filename=file)
+                media = Image(dir=self.dir, filename=file)
                 self.images.append(media)
             elif jso['type'] == 'text':
-                media = Text(dir=self.appdir, filename=file)
+                media = Text(dir=self.dir, filename=file)
                 self.texts.append(media)
             elif jso['type'] == 'youtube':
-                media = Youtube(dir=self.appdir, filename=file)
+                media = Youtube(dir=self.dir, filename=file)
                 self.youtubes.append(media)
             else:
                 log.warning('%s is not properly formatted' % str(file))
@@ -118,22 +119,22 @@ class BADMedia:
 
         # Menu Options
         if answer == 'audio':
-            media = Audio(dir=self.appdir)
+            media = Audio(dir=self.dir)
             self.audios.append(media)
             self.htmler.updateMedia()
 
         elif answer == 'youtube':
-            media = YouTube(dir=self.appdir)
+            media = YouTube(dir=self.dir)
             self.youtubes.append(media)
             self.htmler.updateMedia()
 
         elif answer == 'image':
-            media = Image(dir=self.appdir)
+            media = Image(dir=self.dir)
             self.images.append(media)
             self.htmler.updateMedia()
 
         elif answer == 'text':
-            media = Text(dir=self.appdir)
+            media = Text(dir=self.dir)
             self.texts.append(media)
             self.htmler.updateMedia()
 
@@ -212,7 +213,7 @@ class BADMedia:
 
     def menu(self):
         log.debug('BADMedia.menu started:')
-        os.chdir(self.appdir)
+        os.chdir(self.dir['app'])
 
         inp = ''
         inp = str(input('What would you like to do?\n\
