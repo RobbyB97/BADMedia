@@ -12,7 +12,6 @@ from bs4 import BeautifulSoup as bs
 import json
 import logging
 import requests
-import eyed3
 import time
 
 # Internal Libraries
