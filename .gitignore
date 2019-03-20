@@ -26,5 +26,9 @@ main/htmlclass/__pycache__
 main/htmlclass/__pycache__/*
 main/htmlclass/__pycache__/*.pyc
 
+# Ignore Virtual Environment
+venv/
+venv/*
+
 # Ignore media files
 *.mp3
