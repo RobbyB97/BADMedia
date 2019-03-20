@@ -28,13 +28,14 @@ class Audio(Media):
 
     def __init__(self, dir, filename = None):
 
-        # Set Audio-specific attributes
         self.type = 'audio'
 
         if filename:
             Media.__init__(self, dir=dir, filename=filename)
         else:
             Media.__init__(self, dir=dir)
+
+        log.info('%s loaded...' % self.name)
         return
 
 
@@ -56,16 +57,20 @@ class Audio(Media):
         try:
             xml = requests.get(self.link).text
             soup = bs(xml, "lxml")
+            log.info('Parsing %s...' % self.link)
         except Exception:
             log.exception('Error loading XML from %s...' % self.link)
             return
 
         # Loop through each item, get contents
         for element in soup.findAll('item'):
-            title = element.find('title').text
-            link = element.find(self.tag)['url']
-            self.media[title] = link
+            try:
+                title = element.find('title').text
+                link = element.find(self.tag)['url']
+                self.media[title] = link
+            except:
+                log.warning('Item not formatted properly. Skipping...')
+                continue
 
-        for element in self.media:
-            print('Title: \n %s \n\n Link: \n %s \n\n' % (element, self.media[element]))
+        log.info('%s files found in %s...' % (len(self.media), self.link))
         return
