@@ -156,7 +156,8 @@ class Writer:
             for media in object.media:
                 self.audiosection.append(self.audio['inner'][0])
                 print(self.audio['inner'][0])
-                # TODO: Name of mp3 file
+                self.audiosection.append(media)
+                print(media)
                 self.audiosection.append(self.audio['inner'][1])
                 print(self.audio['inner'][1])
                 self.audiosection.append(object.media[media])
@@ -197,6 +198,10 @@ class Writer:
 
         os.chdir(self.webdir)
 
+        for element in self.audiolist:
+            log.info('Refreshing %s info...' % element.name)
+
+
         # Compile media sections
         self.compileAudio()
         self.compileImage()
@@ -206,6 +211,8 @@ class Writer:
         with open('index.html', 'w') as f:
             f.write(self.master['header'][0])       # HTML head/meta
             f.write(self.master['topbar'][0])        # Navbar
+            for line in self.audiosection:
+                f.write(line)
             f.write(self.master['header'][1])       # HTML foot
 
         #TODO
