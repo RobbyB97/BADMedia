@@ -66,6 +66,7 @@ class BADMedia:
 
         # Load each JSON object from jsondir
         for file in os.listdir(self.jsondir):
+            log.info('Loading %s...' % file)
             with open(file, 'r') as f:
                 jso = json.loads(f.read())
 
@@ -157,21 +158,25 @@ class BADMedia:
         while not found:
             for item in self.audios:
                 if item.name == name:
+                    log.info('%s found. Clearing...' % name)
                     item.clearJSON()
                     self.writer.updateMedia()
                     found = True
             for item in self.youtubes:
                 if item.name == name:
+                    log.info('%s found. Clearing...' % name)
                     item.clearJSON()
                     self.writer.updateMedia()
                     found = True
             for item in self.images:
                 if item.name == name:
+                    log.info('%s found. Clearing...' % name)
                     item.clearJSON()
                     self.writer.updateMedia()
                     found = True
             for item in self.texts:
                 if item.name == name:
+                    log.info('%s found. Clearing...' % name)
                     item.clearJSON()
                     self.writer.updateMedia()
                     found = True
@@ -233,7 +238,8 @@ class BADMedia:
             return
 
         elif inp == 'test':     # Placeholder for testing features
-            self.htmls.compileAudio()
+            for element in self.audios:
+                element.updateJSON()
 
         else:
             print('Input invalid!')
