@@ -156,6 +156,9 @@ class Writer:
                 self.audiosection.append(self.audio['inner'][1])
                 self.audiosection.append(object.media[media])
                 self.audiosection.append(self.audio['inner'][2])
+
+        # Close audio section
+        self.audiosection.append(self.audio['outer'][2])
         return
 
 
@@ -171,7 +174,19 @@ class Writer:
         log.debug('Writer.compileYoutube started...')
 
         self.youtubesection = []        # Declare/ Clear Youtube HTML
-        #TODO
+
+        # Loop through Youtube class instance
+        for object in self.youtubelist:
+            self.youtubesection.append(self.youtube['outer'][0])
+            self.youtubesection.append(object.name)
+            self.youtubesection.append(self.youtube['outer'][1])
+
+            # Loop through media dictionary
+            for media in object.media:
+                self.youtubesection.append(object.media[media])
+
+        # Close Youtube section
+        self.youtubesection.append(self.youtube['outer'][2])
         return
 
 
