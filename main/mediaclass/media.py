@@ -66,7 +66,7 @@ class Media:
     def getMedia(self):
         log.debug('%s.getMedia started...' % self.name)
 
-        self.media = {}     # Reset list of audio links
+        self.media = {}     # Reset media dictionary
 
         # Get XML file
         try:
