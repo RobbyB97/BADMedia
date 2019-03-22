@@ -10,6 +10,7 @@
 # External Libraries
 import os
 import logging
+from yt_iframe import yt
 
 # Set Logger
 log = logging.getLogger('BADMedia')
@@ -145,11 +146,8 @@ class Writer:
         # Loop through Audio class instances
         for object in self.audiolist:
             self.audiosection.append(self.audio['outer'][0])
-            print(self.audio['outer'][0])
             self.audiosection.append(object.name)
-            print(object.name)
             self.audiosection.append(self.audio['outer'][1])
-            print(self.audio['outer'][1])
 
             # Loop through list of media links in each Audio class
             for media in object.media:
