@@ -28,14 +28,6 @@ class Media:
         # Set base project directories
         self.dir = dir
 
-        # Get HTML innerwrap
-        try:
-            os.chdir(self.dir['web'])
-            with open('./assets/templates/%s/post.html' % str(self.type), 'r') as f:
-                self.innerwrap = f.read().split('|')
-        except Exception:
-            log.exception('Could not find %s innerwrap template...' % str(self.type))
-
         # Load JSON object (if filename argument passed)
         if filename:
             try:
