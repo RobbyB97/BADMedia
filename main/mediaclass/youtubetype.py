@@ -57,3 +57,40 @@ class Youtube(Media):
 
         self.updateJSON()
         return
+
+
+    def updateJSON(self):
+        log.debug('%s.updateJSON started...' % self.name)
+
+        self.getMedia()     # Refresh post entries
+
+        # Construct dictionary
+        masterdict = {}     # Final JSON object
+        masterdict['type'] = self.type
+        masterdict['name'] = self.name
+        masterdict['xml'] = self.link
+        masterdict['media'] = self.media
+
+        # Store in json file
+        os.chdir(self.dir['json'])
+        jsonfile = open('%s.json' % self.name, 'w+')
+        json_str = json.dumps(masterdict, sort_keys=True, indent=4)
+        jsonfile.write(json_str)
+        jsonfile.close()
+        return
+
+
+    def getMedia(self):
+        log.debug('%s.getMedia started...' % self.name)
+
+        self.media = {}     # Reset media dictionary
+
+        i=0 # Keys for dict
+        try:
+            for element in yt.channel(self.link)
+                self.media[str(i)] = element
+                i += 1
+        except:
+            log.warning('%s.getMedia Error! Link not valid')
+            self.getInfo()
+        return
