@@ -3,13 +3,14 @@
     Author: Robby Bergers
 
     This is the class used to handle youtube type media
-    
+
 """
 
 # External Libraries
 import os
 import json
 import logging
+from yt_iframe import yt
 
 # Internal Libraries
 from mediaclass.media import Media
