@@ -42,10 +42,18 @@ class Youtube(Media):
             self.name = self.jsonobject['name']
             self.link = self.jsonobject['xml']
             self.media = self.jsonobject['media']
+
+        else:
+            self.getInfo()
         return
 
 
     def getInfo(self):
         log.debug('Youtube.getInfo started...')
 
+        # Get information from user
+        self.name = str(input('What is the name of the Youtube channel?'))
+        self.link = str(input('Enter the link to the channel:'))
+
+        self.updateJSON()
         return
