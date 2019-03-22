@@ -129,7 +129,7 @@ class BADMedia:
             self.writer.updateMedia()
 
         elif answer == 'youtube':
-            media = YouTube(dir=self.dir)
+            media = Youtube(dir=self.dir)
             self.youtubes.append(media)
             self.writer.updateMedia()
 
