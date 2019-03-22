@@ -51,6 +51,11 @@ class BADMedia:
         self.dir['json'] = '%s/json/' % self.dir['app']
         self.dir['web'] = '%s/../docs/' % self.dir['app']
 
+        # Ensure JSON directory exists
+        if not os.path.exists(self.dir['json']):
+            log.warning('JSON directory not detected. Creating...')
+            os.makedirs(self.dir['json'])
+
         # Create Writer class/ Media class lists and populate them
         self.writer = Writer(dir=self.dir)
         self.audios = []
