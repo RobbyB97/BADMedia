@@ -25,8 +25,9 @@ class Youtube(Media):
 
     def __init__(self, dir, filename = None):
 
-        # Set media type and pass to Media class
+        # Set attributes
         self.type = 'youtube'
+        self.dir = dir
 
         # Load JSON object (if filename argument passed)
         if filename:
@@ -85,11 +86,9 @@ class Youtube(Media):
 
         self.media = {}     # Reset media dictionary
 
-        i=0 # Keys for dict
+        # Get media dictionary
         try:
-            for element in yt.channel(self.link)
-                self.media[str(i)] = element
-                i += 1
+            self.media = yt.channelDict(self.link)
         except:
             log.warning('%s.getMedia Error! Link not valid')
             self.getInfo()
