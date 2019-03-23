@@ -53,7 +53,6 @@ class Youtube(Media):
         log.debug('Youtube.getInfo started...')
 
         # Get information from user
-        self.name = str(input('What is the name of the Youtube channel?'))
         self.link = str(input('Enter the link to the channel:'))
 
         self.updateJSON()
@@ -61,7 +60,7 @@ class Youtube(Media):
 
 
     def updateJSON(self):
-        log.debug('%s.updateJSON started...' % self.name)
+        log.debug('Youtube.updateJSON started...')
 
         self.getMedia()     # Refresh post entries
 
@@ -82,14 +81,18 @@ class Youtube(Media):
 
 
     def getMedia(self):
-        log.debug('%s.getMedia started...' % self.name)
+        log.debug('Youtube.getMedia started...')
 
         self.media = {}     # Reset media dictionary
 
         # Get media dictionary
         try:
-            self.media = yt.channelDict(self.link)
+            mediadict = yt.channelDict(self.link)
         except:
             log.warning('%s.getMedia Error! Link not valid')
             self.getInfo()
+
+        # Load channelDict to object attributes
+        self.name = mediadict['name']
+        self.media = mediadict['videos']
         return
