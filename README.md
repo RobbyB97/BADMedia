@@ -43,39 +43,31 @@ Documentation
 ___
 
 <a name="structure"></a>
-Structure
-------------
-
-
+### Structure
 
 ___
 
 <a name="badmedia-class"></a>
-BADMedia Class
-----------------------
+### BADMedia Class
 
 ___
 
 <a name="media-class"></a>
-Media Class
-----------------
+### Media Class
 
 ___
 
 <a name="audio-subclass"></a>
-Audio Subclass
-----------------
+### Audio Subclass
 
 ___
 
 <a name="youtube-subclass"></a>
-Youtube Subclass
-------------------------
+### Youtube Subclass
 
 ___
 
 <a name="writer-class"></a>
-Writer Class
-----------------
+### Writer Class
 
 ___
