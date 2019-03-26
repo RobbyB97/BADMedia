@@ -11,6 +11,7 @@ Table of Contents
 -----------------------
 
 * [Installation](#installation)
+* [User Guide](#user-guide)
 * [Documentation](#documentation)
     * [Structure](#structure)
     * [BADMedia class](#badmedia-class)
@@ -27,15 +28,25 @@ Installation
 
 ___
 
+<a name="user-guide"></a>
+User Guide
+---------------
+
+___
+
 <a name="documentation"></a>
 Documentation
 --------------------
+
+> A detailed explanation of how the program works.
 
 ___
 
 <a name="structure"></a>
 Structure
 ------------
+
+
 
 ___
 
@@ -66,3 +77,5 @@ ___
 <a name="writer-class"></a>
 Writer Class
 ----------------
+
+___
