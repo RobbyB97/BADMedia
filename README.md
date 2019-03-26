@@ -30,3 +30,39 @@ ___
 <a name="documentation"></a>
 Documentation
 --------------------
+
+___
+
+<a name="structure"></a>
+Structure
+------------
+
+___
+
+<a name="badmedia-class"></a>
+BADMedia Class
+----------------------
+
+___
+
+<a name="media-class"></a>
+Media Class
+----------------
+
+___
+
+<a name="audio-subclass"></a>
+Audio Subclass
+----------------
+
+___
+
+<a name="youtube-subclass"></a>
+Youtube Subclass
+------------------------
+
+___
+
+<a name="writer-class"></a>
+Writer Class
+----------------
