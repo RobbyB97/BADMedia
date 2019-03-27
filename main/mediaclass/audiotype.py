@@ -45,7 +45,12 @@ class Audio(Media):
 
         # Use libpyn if this is a libsyn link
         if 'libsyn' in self.link:
+            log.info('libsyn podcast detected...')
+
+            # Create podcast class and load class attributes
             self.podcast = Podcast(self.link)
+            self.name = self.podcast.name
+
         else:
             Media.getInfo(self)
         return
