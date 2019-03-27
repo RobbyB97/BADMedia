@@ -13,6 +13,7 @@ import json
 import logging
 import requests
 import time
+from libpyn.podcast import Podcast
 
 # Internal Libraries
 from mediaclass.media import Media
