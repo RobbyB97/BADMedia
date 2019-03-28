@@ -49,18 +49,25 @@ class Writer:
 
         # Set lists of media objects
         if audios:
+            self.hasAudio = True
     	    self.audiolist = audios
         else:
             self.audiolist = []
+
         if youtubes:
+            self.hasYouTube = True
             self.youtubelist = youtubes
         else:
             self.youtubelist = []
+
         if texts:
+            self.hasText = True
             self.textlist = texts
         else:
             self.textlist = []
+
         if images:
+            self.hasImage = True
             self.imagelist = images
         else:
             self.imagelist = []
