@@ -84,6 +84,7 @@ class Writer:
                 self.master['header'].pop(0)
             with open('./assets/templates/topbar.html', 'r') as f:
                 self.master['topbar'] = f.read().split('|')
+                self.master['topbar'].pop(0)
             with open('./assets/templates/pages.html', 'r') as f:
                 self.master['pages'] = f.read().split('|')
                 self.master['pages'].pop(0)
