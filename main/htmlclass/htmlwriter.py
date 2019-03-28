@@ -212,16 +212,23 @@ class Writer:
         self.compileYoutube()
         self.compileText()
 
+        # Write HTML head and navbar
         with open('index.html', 'w') as f:
             f.write(self.master['header'][0])       # HTML head/meta
             f.write(self.master['topbar'][0])        # Navbar
 
-            # Write media sections
+            # Write audio section
+            f.write(self.master['pages'][1])
             for line in self.audiosection:
                 f.write(line)
+
+            # Write youtube section
+            f.write(self.master['pages'][2])
             for line in self.youtubesection:
                 f.write(line)
-            f.write(self.master['header'][1])       # HTML foot
+
+            # Write closing tags/footer
+            f.write(self.master['header'][1])
 
         #TODO
         return
