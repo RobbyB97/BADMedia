@@ -104,6 +104,7 @@ class Writer:
             with open('./assets/templates/youtube/wrap.html', 'r') as f:
                 self.youtube['outer'] = f.read().split('|')
                 self.youtube['outer'].pop(0)
+        except:
             log.exception('Could not find youtube template...')
 
         try:        # Get text templates
