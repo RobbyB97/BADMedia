@@ -183,7 +183,9 @@ class Writer:
 
             # Loop through media dictionary
             for media in object.media:
-                self.youtubesection.append(object.media[media])
+                vid = yt.video(object.media[media])
+                self.youtubesection.append(vid)
+
 
         # Close Youtube section
         self.youtubesection.append(self.youtube['outer'][2])
@@ -215,7 +217,11 @@ class Writer:
         with open('index.html', 'w') as f:
             f.write(self.master['header'][0])       # HTML head/meta
             f.write(self.master['topbar'][0])        # Navbar
+
+            # Write media sections
             for line in self.audiosection:
+                f.write(line)
+            for line in self.youtubesection:
                 f.write(line)
             f.write(self.master['header'][1])       # HTML foot
 
