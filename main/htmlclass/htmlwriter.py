@@ -217,9 +217,6 @@ class Writer:
 
         os.chdir(self.dir['web'])
 
-        for element in self.audiolist:
-            log.info('Refreshing %s info...' % element.name)
-
         # Compile media sections
         self.compileAudio()
         self.compileImage()
