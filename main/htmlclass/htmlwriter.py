@@ -223,10 +223,21 @@ class Writer:
         self.compileYoutube()
         self.compileText()
 
-        # Write HTML head and navbar
+        # Generate HTML file
         with open('index.html', 'w') as f:
             f.write(self.master['header'][0])       # HTML head/meta
-            f.write(self.master['topbar'][0])        # Navbar
+
+            # Write topbar
+            f.write(self.master['topbar'][0])
+            if self.hasAudio:
+                f.write(self.master['topbar'][1])
+            if self.hasImage:
+                f.write(self.master['topbar'][2])
+            if self.hasText:
+                f.write(self.master['topbar'][3])
+            if self.hasYouTube:
+                f.write(self.master['topbar'][4])
+            f.write(self.master['topbar'][5])
 
             # Write audio section
             f.write(self.master['pages'][1])
