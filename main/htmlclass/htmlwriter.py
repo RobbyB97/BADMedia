@@ -104,10 +104,6 @@ class Writer:
             with open('./assets/templates/youtube/wrap.html', 'r') as f:
                 self.youtube['outer'] = f.read().split('|')
                 self.youtube['outer'].pop(0)
-            with open('./assets/templates/youtube/post.html', 'r') as f:
-                self.youtube['inner'] = f.read().split('|')
-                self.youtube['inner'].pop(0)
-        except:
             log.exception('Could not find youtube template...')
 
         try:        # Get text templates
@@ -185,6 +181,7 @@ class Writer:
             for media in object.media:
                 vid = yt.video(object.media[media])
                 self.youtubesection.append(vid)
+                self.youtubesection.append('</br>')
 
 
         # Close Youtube section
