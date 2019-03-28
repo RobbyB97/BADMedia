@@ -33,6 +33,12 @@ class Writer:
         self.text = {}
         self.youtube = {}
 
+        # Initialize state booleans
+        self.hasAudio = False
+        self.hasText = False
+        self.hasImage = False
+        self.hasYouTube = False
+
         # Methods to run on init
         self.getTemplates()
         return
