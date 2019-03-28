@@ -50,7 +50,7 @@ class Writer:
         # Set lists of media objects
         if audios:
             self.hasAudio = True
-    	    self.audiolist = audios
+            self.audiolist = audios
         else:
             self.audiolist = []
 
@@ -197,7 +197,6 @@ class Writer:
                 vid = yt.video(object.media[media])
                 self.youtubesection.append(vid)
                 self.youtubesection.append('</br>')
-
 
         # Close Youtube section
         self.youtubesection.append(self.youtube['outer'][2])
