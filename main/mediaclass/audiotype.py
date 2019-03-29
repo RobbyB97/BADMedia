@@ -65,30 +65,4 @@ class Audio(Media):
 
         else:
             pass
-
-    def getMediaLibsyn(self):
-        log.debug('%s.getMediaLibsyn started...' % self.name)
-
-        self.media = {}     # Reset list of audio links
-
-        # Get XML file
-        try:
-            xml = requests.get(self.link).text
-            soup = bs(xml, "lxml")
-            log.info('Parsing %s...' % self.link)
-        except Exception:
-            log.exception('Error loading XML from %s...' % self.link)
-            return
-
-        # Loop through each item, get contents
-        for element in soup.findAll('item'):
-            try:
-                title = element.find('title').text
-                link = element.find(self.tag)['url']
-                self.media[title] = link
-            except:
-                log.warning('Item not formatted properly. Skipping...')
-                continue
-
-        log.info('%s files found in %s...' % (len(self.media), self.link))
         return
