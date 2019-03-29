@@ -241,7 +241,7 @@ class BADMedia:
             self.generatePage()
 
         elif inp == 'exit':
-            return
+            exit()
 
         elif inp == 'test':     # Placeholder for testing features
             for element in self.audios:
@@ -259,7 +259,8 @@ if __name__ == '__main__':
 
     try:
         bad = BADMedia()
-        bad.menu()
+        while True:
+            bad.menu()
 
     except Exception:
         log.exception('Error in main process')
