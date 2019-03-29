@@ -238,15 +238,31 @@ class Writer:
                 f.write(self.master['topbar'][4])
             f.write(self.master['topbar'][5])
 
-            # Write audio section
-            f.write(self.master['pages'][1])
-            for line in self.audiosection:
-                f.write(line)
+            f.write(self.master['pages'][0])
 
-            # Write youtube section
-            f.write(self.master['pages'][2])
-            for line in self.youtubesection:
-                f.write(line)
+            if self.hasAudio:   # Write audio section
+                f.write(self.master['pages'][1])
+                for line in self.audiosection:
+                    f.write(line)
+                f.write(self.master['pages'][2])
+
+            if self.hasYouTube:     # Write youtube section
+                f.write(self.master['pages'][3])
+                for line in self.youtubesection:
+                    f.write(line)
+                f.write(self.master['pages'][4])
+
+            if self.hasImage:       # Write image section
+                f.write(self.master['pages'][5])
+                for line in self.imagesection:
+                    f.write(line)
+                f.write(self.master['pages'][6])
+
+            if self.hasText:        # Write text section
+                f.write(self.master['pages'][7])
+                for line in self.textsection:
+                    f.write(line)
+                f.write(self.master['pages'][8])
 
             # Write closing tags/footer
             f.write(self.master['header'][1])
