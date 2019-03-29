@@ -14,3 +14,25 @@ import logging
 import requests
 import time
 from libpyn.podcast import Podcast
+
+class Libsyn:
+
+
+    def __init__(self):
+        return
+
+
+    def getInfo(self):
+        return
+
+
+    def getMedia(self):
+        return
+
+
+    def updateJSON(self):
+        return
+
+
+    def clearJSON(self):
+        return
