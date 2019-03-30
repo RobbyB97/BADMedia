@@ -98,7 +98,7 @@ class BADMedia:
                 log.warning('%s is not properly formatted' % str(file))
 
         # Update Media class lists in Writer class
-        self.writer.loadMedia(audios=self.audios, youtubes=self.youtubes, texts=self.texts, images=self.images)
+        self.writer.loadMedia(audios=self.audios, libsyns=self.libsyns, youtubes=self.youtubes, texts=self.texts, images=self.images)
         return
 
 
