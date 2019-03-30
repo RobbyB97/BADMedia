@@ -71,8 +71,7 @@ class Libsyn(Media):
         self.media = {}     # Reset media dictionary
 
         # Get iframes and titles
-        iframelist = self.podcast.iframes()
-
+        self.media = self.podcast.iframes()
         print(self.media)
         return
 
