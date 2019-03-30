@@ -15,6 +15,14 @@ import requests
 import time
 from libpyn.podcast import Podcast
 
+# Internal Libraries
+from mediaclass.media import Media
+
+# Set Logger
+log = logging.getLogger('BADMedia')
+
+
+
 class Libsyn(Media):
 
 
@@ -58,10 +66,21 @@ class Libsyn(Media):
 
 
     def getMedia(self):
+        log.debug('%s.getMedia started...' % self.name)
+
+        self.media = {}     # Reset media dictionary
+
+        # Get iframes and titles
+        iframelist = self.podcast.iframes()
+
+        print(self.media)
         return
 
 
     def updateJSON(self):
+        log.debug('%s.updateJSON started...' % self.name)
+
+        self.getMedia()     # Refresh post entries
         return
 
 
