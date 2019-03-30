@@ -59,6 +59,7 @@ class BADMedia:
         # Create Writer class/ Media class lists and populate them
         self.writer = Writer(dir=self.dir)
         self.audios = []
+        self.libsyns = []
         self.youtubes = []
         self.images = []
         self.texts = []
@@ -80,6 +81,9 @@ class BADMedia:
             if jso['type'] == 'audio':
                 media = Audio(dir=self.dir, filename=file)
                 self.audios.append(media)
+            elif jso['type'] == 'libsyn':
+                media = Libsyn(dir=self.dir, filename=file)
+                self.libsyns.append(media)
             elif jso['type'] == 'image':
                 media = Image(dir=self.dir, filename=file)
                 self.images.append(media)
@@ -116,7 +120,8 @@ class BADMedia:
 
         # Menu
         answer = str(input('What type of media?\n\
-            audio: an podcast or other audio stream\n\
+            audio: an audio feed\n\
+            libsyn: a podcast hosted on libsyn\n\
             youtube: a youtube channel\n\
             image: an image feed\n\
             text: a text article feed\n\
@@ -126,6 +131,11 @@ class BADMedia:
         if answer == 'audio':
             media = Audio(dir=self.dir)
             self.audios.append(media)
+            self.writer.updateMedia()
+
+        elif answer == 'libsyn':
+            media = Libsyn(dir=self.dir)
+            self.libsyns.append(media)
             self.writer.updateMedia()
 
         elif answer == 'youtube':
