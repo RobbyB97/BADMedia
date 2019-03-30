@@ -34,15 +34,15 @@ class Youtube(Media):
             try:
                 os.chdir(self.dir['json'])
                 with open(filename, 'r') as f:
-                    self.jsonobject = json.loads(f.read())
+                    jsonobject = json.loads(f.read())
             except:
                 log.warning('Error loading %s.json. Creating new media source...' % filename)
                 self.getInfo()
 
             # Assign class attributes from JSON object
-            self.name = self.jsonobject['name']
-            self.link = self.jsonobject['xml']
-            self.media = self.jsonobject['media']
+            self.name = jsonobject['name']
+            self.link = jsonobject['xml']
+            self.media = jsonobject['media']
 
         else:
             self.getInfo()
