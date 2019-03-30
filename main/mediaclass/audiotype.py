@@ -40,29 +40,8 @@ class Audio(Media):
 
 
     def getInfo(self):
-
-        self.link = str(input('Enter the link to the feed:'))
-
-        # Use libpyn if this is a libsyn link
-        if 'libsyn' in self.link:
-            log.info('libsyn podcast detected...')
-
-            # Create podcast class and load class attributes
-            self.podcast = Podcast(self.link)
-            self.name = self.podcast.name
-
-        else:
-            Media.getInfo(self)
-        return
+        pass
 
 
     def getMedia(self):
-        log.debug('Audio.getMedia started...')
-
-        # Use the libsyn package if it's a libsyn podcast
-        if 'libsyn' in self.link:
-            log.info('Libsyn XML detected...')
-
-        else:
-            pass
-        return
+        pass
