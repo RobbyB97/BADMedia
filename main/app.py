@@ -16,8 +16,9 @@ import json
 from bs4 import BeautifulSoup as bs
 
 # Internal Libraries
-from mediaclass.audiotype import Audio
 from htmlclass.htmlwriter import Writer
+from mediaclass.audiotype import Audio
+from mediaclass.libsyntype import Libsyn
 from mediaclass.youtubetype import Youtube
 from mediaclass.imagetype import Image
 from mediaclass.texttype import Text
@@ -106,6 +107,8 @@ class BADMedia:
 
         for item in self.audios:
             print('%s\n' % item.name)
+        for item in self.libsyns:
+            print('%s\n' % item.name)
         for item in self.texts:
             print('%s\n' % item.name)
         for item in self.youtubes:
@@ -173,6 +176,12 @@ class BADMedia:
         # Loop through media list until match is found
         while not found:
             for item in self.audios:
+                if item.name == name:
+                    log.info('%s found. Clearing...' % name)
+                    item.clearJSON()
+                    self.writer.updateMedia()
+                    found = True
+            for item in self.libsyns:
                 if item.name == name:
                     log.info('%s found. Clearing...' % name)
                     item.clearJSON()
