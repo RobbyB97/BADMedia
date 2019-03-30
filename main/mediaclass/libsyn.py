@@ -19,6 +19,9 @@ class Libsyn:
 
 
     def __init__(self):
+
+        self.type = 'libsyn'
+
         return
 
 
