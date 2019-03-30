@@ -52,7 +52,7 @@ class Youtube(Media):
     def getInfo(self):
         log.debug('Youtube.getInfo started...')
 
-        # Get information from user
+        # Get link from user
         self.link = str(input('Enter the link to the channel:'))
 
         self.updateJSON()
