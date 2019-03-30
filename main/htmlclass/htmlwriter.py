@@ -29,11 +29,13 @@ class Writer:
         # Initialize template dictionaries
         self.master = {}        # HTML Header / Footer / Navbar
         self.audio = {}
+        self.libsyn = {}
         self.image = {}
         self.text = {}
         self.youtube = {}
 
         # Initialize state booleans
+        self.hasLibsyn = False
         self.hasAudio = False
         self.hasText = False
         self.hasImage = False
@@ -44,7 +46,7 @@ class Writer:
         return
 
 
-    def loadMedia(self, audios=None, youtubes=None, texts=None, images=None):
+    def loadMedia(self, audios=None, libsyns=None, youtubes=None, texts=None, images=None):
         log.debug('Writer.loadMedia started...')
 
         # Set lists of media objects
@@ -53,6 +55,12 @@ class Writer:
             self.audiolist = audios
         else:
             self.audiolist = []
+
+        if libsyns:
+            self.hasLibsyn = True
+            self.libsynlist = libsyns
+        else:
+            self.libsynlist = []
 
         if youtubes:
             self.hasYouTube = True
@@ -102,6 +110,14 @@ class Writer:
         except:
             log.exception('Could not find audio template...')
 
+        try:        # Get libsyn post template
+            os.chdir(self.dir['web'])
+            with open('./assets/templates/libsyn/post.html', 'r') as f:
+                self.libsyn['inner'] = f.read().split('|')
+                self.libsyn['inner'].pop(0)
+        except:
+            log.exception('Could not find libsyn template...')
+
         try:        # Get image templates
             os.chdir(self.dir['web'])
             with open('./assets/templates/image/wrap.html', 'r') as f:
@@ -140,6 +156,8 @@ class Writer:
         # Iterate through media lists and update JSON objects
         for item in self.audiolist:
             item.updateJSON()
+        for item in self.libsynlist:
+            item.updateJSON()
         for item in self.youtubelist:
             item.updateJSON()
         for item in self.textlist:
@@ -151,8 +169,23 @@ class Writer:
 
     def compileAudio(self):
         log.debug('Writer.compileAudio started...')
+        #TODO: Make sure this compiles properly if only libsyn, or if only audio
 
         self.audiosection = []        # Declare/ Clear Audio HTML
+
+        # Loop through Libsyn class instances
+        for object in self.libsynlist:
+            self.audiosection.append(self.audio['outer'][0])
+            self.audiosection.append(object.name)
+            self.audiosection.append(self.audio['outer'][1])
+
+            # Loop through list of media links in each Libsyn class
+            for media in object.media:
+                self.audiosection.append(self.libsyn['inner'][0])
+                self.audiosection.append(media)
+                self.audiosection.append(self.libsyn['inner'][1])
+                self.audiosection.append(object.media[media])
+                self.audiosection.append(self.libsyn['inner'][2])
 
         # Loop through Audio class instances
         for object in self.audiolist:
