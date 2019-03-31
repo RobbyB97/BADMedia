@@ -261,7 +261,7 @@ class Writer:
 
             # Write topbar
             f.write(self.master['topbar'][0])
-            if self.hasAudio:
+            if self.hasAudio or self.hasLibsyn:
                 f.write(self.master['topbar'][1])
             if self.hasImage:
                 f.write(self.master['topbar'][2])
@@ -273,7 +273,7 @@ class Writer:
 
             f.write(self.master['pages'][0])
 
-            if self.hasAudio:   # Write audio section
+            if self.hasAudio or self.hasLibsyn:   # Write audio section
                 f.write(self.master['pages'][1])
                 for line in self.audiosection:
                     f.write(line)
