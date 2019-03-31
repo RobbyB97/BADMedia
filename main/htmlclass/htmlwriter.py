@@ -182,10 +182,8 @@ class Writer:
             # Loop through list of media links in each Libsyn class
             for media in object.media:
                 self.audiosection.append(self.libsyn['inner'][0])
-                self.audiosection.append(media)
-                self.audiosection.append(self.libsyn['inner'][1])
                 self.audiosection.append(object.media[media])
-                self.audiosection.append(self.libsyn['inner'][2])
+                self.audiosection.append(self.libsyn['inner'][1])
 
         # Loop through Audio class instances
         for object in self.audiolist:
