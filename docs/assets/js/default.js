@@ -47,6 +47,11 @@ function clearPage() {
   $("#textbg").hide();
   $("#youtubebg").hide();
 
+  // Hide navbar when option is selected
+  if (navbar) {
+    toggleNav();
+  }
+
 }
 
 // Toggles navigation sidebar
