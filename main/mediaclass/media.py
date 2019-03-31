@@ -97,12 +97,11 @@ class Media:
         masterdict['tag'] = self.tag
         masterdict['media'] = self.media
 
-        # Store in json file
+        # Store in JSON file
         os.chdir(self.dir['json'])
-        jsonfile = open('%s.json' % self.name, 'w+')
         json_str = json.dumps(masterdict, sort_keys=True, indent=4)
-        jsonfile.write(json_str)
-        jsonfile.close()
+        with open('%s.json' % self.name, 'w+') as f:
+            f.write(json_str)
         return
 
 
