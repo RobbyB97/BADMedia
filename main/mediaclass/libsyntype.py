@@ -72,7 +72,6 @@ class Libsyn(Media):
 
         # Get iframes and titles
         self.media = self.podcast.iframes()
-        print(self.media)
         return
 
 
@@ -80,8 +79,17 @@ class Libsyn(Media):
         log.debug('%s.updateJSON started...' % self.name)
 
         self.getMedia()     # Refresh post entries
-        return
 
+        # Construct dictionary
+        masterdict = {} # Final JSON object
+        masterdict['type'] = self.type
+        masterdict['name'] = self.name
+        masterdict['xml'] = self.link
+        masterdict['media'] = self.media
 
-    def clearJSON(self):
+        # Store in JSON file
+        os.chdir(self.dir['json'])
+        json_str = json.dumps(masterdict, sort_keys=True, indent=4)
+        with open('%s.json' % self.name, 'w+') as f:
+            f.write(json_str)
         return
