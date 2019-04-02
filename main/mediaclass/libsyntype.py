@@ -47,6 +47,10 @@ class Libsyn(Media):
             self.link = jsonobject['xml']
             self.media = jsonobject['media']
 
+            # Initialize podcast class
+            self.podcast = Podcast(self.link)
+            self.getMedia()
+
         else:
             self.getInfo()
         return
@@ -68,10 +72,20 @@ class Libsyn(Media):
     def getMedia(self):
         log.debug('%s.getMedia started...' % self.name)
 
-        self.media = {}     # Reset media dictionary
+        self.media = {}
 
-        # Get iframes and titles
-        self.media = self.podcast.iframes()
+        # Get iframes
+        self.media['iframes'] = self.podcast.iframes()
+
+        # Get older episodes
+        self.media['mp3'] = []
+        for element in self.podcast.mp3list:
+            try:
+                x = self.media['iframes'][element['title']]
+                log.debug('%s is an iframe, removing from list of mp3 files...' % element['title'])
+            except:
+                log.debug('adding %s to list of mp3 files' % element['title'])
+                self.media['mp3'].append(element)
         return
 
 
