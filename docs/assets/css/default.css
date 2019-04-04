@@ -92,6 +92,16 @@
     #navbutton:hover {
       color: #aac3eb; } }
 
+.youtube-posts {
+  width: 100%; }
+  .youtube-posts .video {
+    max-width: 80vw;
+    max-height: auto; }
+
+.channel-name {
+  font-size: 2em;
+  text-align: center; }
+
 #nav {
   text-align: center;
   padding-top: 3em;
@@ -99,5 +109,25 @@
   #nav button {
     background-color: transparent;
     border: 0; }
+
+#home {
+  position: absolute;
+  top: 3em; }
+
+#audio {
+  position: absolute;
+  top: 3em; }
+
+#youtube {
+  position: absolute;
+  top: 3em; }
+
+#image {
+  position: absolute;
+  top: 3em; }
+
+#text {
+  position: absolute;
+  top: 3em; }
 
 /*# sourceMappingURL=default.css.map */
