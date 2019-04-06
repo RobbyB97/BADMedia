@@ -54,8 +54,8 @@ class Media:
         log.debug('Media.getInfo started')
 
         # Get media information from user
-        self.name = str(input('What should this media be called?\n'))
         self.link = str(input('Enter the link to the feed:\n'))
+        self.name = str(input('What should this media be called? [default = find RSS title]\n'))
         self.tag = str(input('Enter tag name containing media: [default = \'enclosure\']'))
         if not self.tag:
             self.tag = 'enclosure'
@@ -65,6 +65,7 @@ class Media:
 
     def getMedia(self):
         log.debug('%s.getMedia started...' % self.name)
+
 
         self.media = {}     # Reset media dictionary
 
@@ -76,6 +77,10 @@ class Media:
 
         # Parse and scrape file links
         soup = bs(xml, "lxml")
+
+        # Find RSS title if no name given
+        if self.name == '':
+            self.name = soup.find('title').text
         i=0 # Counter, serves as ID for each entry
         for element in soup.findAll(self.tag):
             self.media[str(i)] = element['url']
