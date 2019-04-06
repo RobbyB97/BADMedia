@@ -13,7 +13,6 @@ import json
 import logging
 import requests
 import time
-from libpyn.podcast import Podcast
 
 # Internal Libraries
 from mediaclass.media import Media
@@ -34,14 +33,4 @@ class Audio(Media):
             Media.__init__(self, dir=dir, filename=filename)
         else:
             Media.__init__(self, dir=dir)
-
-        log.info('%s loaded...' % self.name)
         return
-
-
-    def getInfo(self):
-        pass
-
-
-    def getMedia(self):
-        pass
