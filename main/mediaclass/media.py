@@ -13,7 +13,6 @@ import json
 import logging
 import requests
 
-
 # Set Logger
 log = logging.getLogger('BADMedia')
 
@@ -25,8 +24,7 @@ class Media:
     def __init__(self, dir, filename = None):
         log.debug('New %s class initializing...' % self.type)
 
-        # Set base project directories
-        self.dir = dir
+        self.dir = dir      # Set base project directories
 
         # Load JSON object (if filename argument passed)
         if filename:
@@ -65,7 +63,6 @@ class Media:
 
     def getMedia(self):
         log.debug('%s.getMedia started...' % self.name)
-
 
         self.media = {}     # Reset media dictionary
 
