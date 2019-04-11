@@ -134,6 +134,13 @@ $font-small: 0.8em;
   }
 }
 
+#title {
+  position: absolute;
+  left: 5em;
+  top: 0.5em;
+  font-size: 1.5em;
+}
+
 .youtube-posts {
   width: 100%;
   .video {
@@ -169,6 +176,18 @@ $font-small: 0.8em;
 #audio {
   position: absolute;
   top: 3em;
+}
+
+.audio-content {
+  h3 {
+    text-align: center;
+  }
+  audio {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+  }
 }
 
 #youtube {
