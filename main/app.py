@@ -179,30 +179,35 @@ class BADMedia:
                 if item.name == name:
                     log.info('%s found. Clearing...' % name)
                     item.clearJSON()
+                    self.audios.pop(self.audios.index(item))
                     self.writer.updateMedia()
                     found = True
             for item in self.libsyns:
                 if item.name == name:
                     log.info('%s found. Clearing...' % name)
                     item.clearJSON()
+                    self.libsyns.pop(self.libsyns.index(item))
                     self.writer.updateMedia()
                     found = True
             for item in self.youtubes:
                 if item.name == name:
                     log.info('%s found. Clearing...' % name)
                     item.clearJSON()
+                    self.youtubes.pop(self.youtubes.index(item))
                     self.writer.updateMedia()
                     found = True
             for item in self.images:
                 if item.name == name:
                     log.info('%s found. Clearing...' % name)
                     item.clearJSON()
+                    self.images.pop(self.images.index(item))
                     self.writer.updateMedia()
                     found = True
             for item in self.texts:
                 if item.name == name:
                     log.info('%s found. Clearing...' % name)
                     item.clearJSON()
+                    self.texts.pop(self.texts.index(item))
                     self.writer.updateMedia()
                     found = True
             break
