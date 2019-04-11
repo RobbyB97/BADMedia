@@ -75,20 +75,25 @@ function toggleNav() {
 function homepage() {
   clearPage();
   $("#homebg").show();
+  $("#title").text("BADMedia")
 }
 function audiopage() {
   clearPage();
   $("#audiobg").show();
+  $("#title").text("Audio & Podcasts")
 }
 function imagepage() {
   clearPage();
   $("#imagebg").show();
+  $("#title").text("Images")
 }
 function textpage() {
   clearPage();
   $("#textbg").show();
+  $("#title").text("Text articles")
 }
 function youtubepage() {
   clearPage();
   $("#youtubebg").show();
+  $("#title").text("YouTube Channels")
 }
